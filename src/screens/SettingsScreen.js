@@ -1,0 +1,95 @@
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import defaultStyle from '../styles/defaultStyle';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import SocialLinks from '../components/SocialLinks';
+import InfoApp from '../components/InfoApp';
+import MobileOnlyView from '../components/MobileOnlyView';
+import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
+import translations from '../utils/translations';
+import pkg from '../../package.json';
+
+// Social links array: ogni oggetto rappresenta un social con icona e url
+const SOCIAL_LINKS = [
+  { id: 1, url: 'https://www.instagram.com/federicolupolii/', label: 'instagram' },
+  { id: 2, url: 'https://www.github.com/FedericoLupoli/', label: 'github' },
+  { id: 3, url: 'https://www.linkedin.com/in/federico-lupoli-548791286/', label: 'linkedin' },
+  { id: 4, url: 'https://www.federicolupoli.it/knowby/', label: 'google' },
+];
+
+export default function SettingsScreen() {
+  // Stato lingua globale
+  const { language, toggleLanguage } = useLanguage();
+  // Stato per tracciare quale icona è attiva nel footer
+  const [activeIcon, setActiveIcon] = useState('settings');
+
+  const {setIsLoggedIn} = useAuth();
+
+  // Funzione per gestire il logout (placeholder)
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    alert('Logout effettuato!');
+  };
+
+  return (
+    <MobileOnlyView>
+      <View style={defaultStyle.container}>
+        {/* Header */}
+        <Header />
+
+        {/* Body delle impostazioni */}
+        <View style={{ flex: 1, justifyContent: 'center', padding: 20, marginTop: -75 }}>
+
+          {/* Sezione Lingua */}
+          <View style={defaultStyle.section}>
+            <Text style={defaultStyle.label}>
+              <FontAwesome name='language' size={28} /> {translations[language].language}
+              <Text style={defaultStyle.green}>{translations[language].current}</Text>
+            </Text>
+            <View style={defaultStyle.row}>
+              <Text style={defaultStyle.text}>{translations[language].current}</Text>
+              <TouchableOpacity
+                style={defaultStyle.buttonFooter}
+                onPress={toggleLanguage}
+              >
+                <Text style={defaultStyle.buttonFooterText}>{translations[language].buttonLanguage}</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Sezione Account/Logout */}
+          <View style={defaultStyle.section}>
+            <Text style={defaultStyle.label}>
+              <FontAwesome name='user' size={28} /> {translations[language].account}
+            </Text>
+            <TouchableOpacity
+              style={[defaultStyle.buttonFooter, { backgroundColor: '#d32f2f' }]}
+              onPress={handleLogout}
+            >
+              <Text style={[defaultStyle.buttonFooterText, { color: '#fff', textAlign: 'center' }]}>
+                {translations[language].logout}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Sezione Social */}
+          <View style={defaultStyle.section}>
+            <Text style={defaultStyle.label}>
+              <FontAwesome name='share' size={28} /> {translations[language].social}
+            </Text>
+            <SocialLinks socialLinks={SOCIAL_LINKS} />
+          </View>
+
+          {/* Sezione Info App */}
+          <InfoApp version={pkg.version} label={translations[language].infoApp} />
+        </View>
+
+        {/* Footer */}
+        <Footer activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
+      </View>
+    </MobileOnlyView>
+  );
+}

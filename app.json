@@ -1,29 +1,48 @@
 {
   "expo": {
     "name": "KnowByV2",
-    "slug": "KnowByV2",
+    "slug": "knowby",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/icons/icon.png",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#232b2b"
     },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/icons/adaptive-icon.png",
+      "backgroundColor": "#232b2b"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icons/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d4995d21-270c-4c25-a4d3-71a221c41660"
+      }
+    },
+    "owner": "federicolupoli",
+    "ios": {
+      "bundleIdentifier": "it.federicolupoli.knowby",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "it.federicolupoli.knowby"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d4995d21-270c-4c25-a4d3-71a221c41660"
     }
   }
 }
