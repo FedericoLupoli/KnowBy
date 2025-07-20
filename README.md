@@ -1,16 +1,32 @@
 # KnowByV2
 
-KnowByV2 è una mobile app sviluppata con React Native (Expo), progettata per funzionare **solo su smartphone Android/iOS**. L'app offre una UI moderna con header, body e un footer “volante” con pulsanti-icona.
+![Expo](https://img.shields.io/badge/Expo-React%20Native-blueviolet?logo=expo)
+![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-green)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-## Funzionalità principali
+KnowByV2 è una mobile app moderna sviluppata con **React Native (Expo)**, progettata per aiutare studenti e tutor a connettersi facilmente. L'app offre una UI elegante, animazioni micro-interattive e un tema scuro con dettagli verdi.
+
+---
+
+## ✨ Funzionalità principali
 
 - **Header**: Gradient moderno, titolo dell’app.
-- **Body**: Area centrale per i contenuti (attualmente placeholder).
+- **Body**: Area centrale per i contenuti (es. elenco tutor, profili, ecc.).
 - **Footer volante**: Pulsanti-icona (Home, Search, User, Settings) ancorati in basso, con effetto floating e selezione attiva.
-- **Responsive**: UI ottimizzata per qualsiasi smartphone.
+- **Responsive**: UI ottimizzata per smartphone.
 - **Blocco tablet/web**: L’app mostra un messaggio di blocco se aperta su tablet, iPad o web.
+- **Integrazione API**: Visualizza tutor disponibili tramite backend KnowByAPI.
 
-## Struttura delle cartelle
+---
+
+## 📱 Screenshot
+
+<!-- Inserisci qui uno screenshot dell'app, ad esempio: -->
+<!-- ![Schermata KnowByV2](assets/images/splash-icon.png) -->
+
+---
+
+## 📦 Struttura delle cartelle
 
 ```
 src/
@@ -23,39 +39,71 @@ assets/
   images/        // Immagini (splash, background, ecc.)
 ```
 
-## Avvio rapido
+---
 
-1. Installa le dipendenze:
+## 🚀 Avvio rapido
+
+1. **Clona il repository:**
+   ```sh
+   git clone https://github.com/tuo-utente/KnowByV2.git
+   cd KnowByV2
    ```
+2. **Installa le dipendenze:**
+   ```sh
    npm install
+   # oppure
+   yarn install
    ```
-2. Avvia l’app su dispositivo mobile:
-   ```
+3. **Avvia l’app su dispositivo mobile:**
+   ```sh
    npm start
-   ```
-   oppure
-   ```
+   # oppure
    expo start
    ```
+   Scansiona il QR code con l’app Expo Go su Android/iOS.
 
-## Dipendenze principali
+---
+
+## 🔗 Integrazione API
+
+L’app si collega al backend [KnowByAPI](https://github.com/tuo-utente/KnowByAPI) per mostrare tutor, recensioni, messaggi e pagamenti. Consulta la documentazione API per dettagli su endpoint e parametri.
+
+---
+
+## 🛠️ Dipendenze principali
 
 - **expo**
 - **react-native**
 - **expo-linear-gradient**
 - **@expo/vector-icons**
 
-## Note
+---
+
+## 🤝 Contribuire
+
+Contributi, segnalazioni di bug e suggerimenti sono benvenuti! Apri una issue o una pull request.
+
+1. Fai fork del progetto
+2. Crea un branch per la tua feature (`git checkout -b feature/NomeFeature`)
+3. Fai commit delle modifiche (`git commit -am 'Aggiunta nuova feature'`)
+4. Push sul branch (`git push origin feature/NomeFeature`)
+5. Apri una Pull Request
+
+---
+
+## 📄 Licenza
+
+Questo progetto è distribuito sotto licenza MIT. Vedi il file LICENSE per dettagli.
+
+---
+
+## 📋 Note aggiuntive
 
 - L’app non è utilizzabile su web o tablet/iPad.
 - Per aggiungere nuove schermate, crea un nuovo file in `src/screens/` e aggiorna la navigazione.
 - Per aggiungere nuovi componenti riutilizzabili, usa `src/components/`.
+- Le icone e immagini sono in `assets/`.
 
 ---
 
-## Prossimi passi consigliati
-
-- Separare Header, Footer e Body in componenti dedicati in `src/components/`.
-- Spostare la logica della schermata principale in `src/screens/HomeScreen.js`.
-- Aggiornare i path degli import di stili e componenti.
-- Spostare le icone e immagini nelle rispettive sottocartelle in `assets/`. 
+**KnowByV2** © 2024 – Made with ❤️ by [Il tuo nome o team] 
