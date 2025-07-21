@@ -62,17 +62,22 @@ export default function ProfileRegister() {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('student');
   const [bio, setBio] = useState('');
+  const [subject, setSubject] = useState('');
   const [loading, setLoading] = useState(false);
   const { setIsLoggedIn, setUser } = useAuth();
   const navigation = useNavigation();
 
   const handleRegister = async () => {
+    if (role === 'tutor' && !subject.trim()) {
+      alert('La materia è obbligatoria per i tutor');
+      return;
+    }
     setLoading(true);
     try {
       const res = await fetch('http://66.118.245.111:3000/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password, role, bio: role === 'tutor' ? bio : undefined }),
+        body: JSON.stringify({ name, email, password, role, bio: role === 'tutor' ? bio : undefined, subject: role === 'tutor' ? subject : undefined }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -136,14 +141,23 @@ export default function ProfileRegister() {
             </View>
           </View>
           {role === 'tutor' && (
-            <TextInput
-              style={loginStyle.input}
-              placeholder="Bio (opzionale)"
-              value={bio}
-              onChangeText={setBio}
-              autoCorrect={false}
-              multiline
-            />
+            <>
+              <TextInput
+                style={loginStyle.input}
+                placeholder="Materia (obbligatoria)"
+                value={subject}
+                onChangeText={setSubject}
+                autoCorrect={false}
+              />
+              <TextInput
+                style={loginStyle.input}
+                placeholder="Bio (opzionale)"
+                value={bio}
+                onChangeText={setBio}
+                autoCorrect={false}
+                multiline
+              />
+            </>
           )}
           <Button
             style={loginStyle.button}

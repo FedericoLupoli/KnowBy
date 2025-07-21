@@ -21,9 +21,9 @@ export default function ProfilePage() {
   const [bio, setBio] = useState(user?.bio || '');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [subject, setSubject] = useState(user?.subject || '');
+  const [hourlyRate, setHourlyRate] = useState(user?.hourlyRate ? String(user.hourlyRate) : '');
 
-  // MOCK: ruolo utente (in futuro da context o API)
-  const userRole = 'student'; // Cambia in 'tutor' per testare il controllo
 
   if (!user) {
     return (
@@ -45,6 +45,7 @@ export default function ProfilePage() {
     setLoading(true);
     try {
       const token = await AsyncStorage.getItem('jwtToken');
+      // 1. Modifica dati
       const res = await fetch(`http://66.118.245.111:3000/api/users/${user.id}`, {
         method: 'PUT',
         headers: {
@@ -56,15 +57,23 @@ export default function ProfilePage() {
           email,
           bio,
           password: password.length > 0 ? password : undefined,
+          subject: user.role === 'tutor' ? subject : undefined,
+          hourlyRate: user.role === 'tutor' && hourlyRate ? Number(hourlyRate) : undefined,
         }),
       });
+      const result = await res.json();
       if (!res.ok) {
-        const err = await res.json();
-        Alert.alert('Errore', err.error || 'Errore durante il salvataggio');
+        Alert.alert('Errore', result.error || 'Errore durante il salvataggio');
       } else {
-        const data = await res.json();
-        setUser(data.user);
-        Alert.alert('Successo', 'Profilo aggiornato!');
+        // 2. Recupera i dati aggiornati (autenticato)
+        const resUser = await fetch(`http://66.118.245.111:3000/api/users/${user.id}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (resUser.ok) {
+          const data = await resUser.json();
+          setUser(data.user || data);
+        }
+        Alert.alert('Successo', result.message || 'Profilo aggiornato!');
       }
     } catch (e) {
       Alert.alert('Errore', 'Errore di rete');
@@ -101,6 +110,27 @@ export default function ProfilePage() {
               keyboardType="email-address"
               autoCapitalize="none"
             />
+            {user.role === 'tutor' && (
+              <>
+                <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>Materia</Text>
+                <TextInput
+                  style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff' }}
+                  value={subject}
+                  onChangeText={setSubject}
+                  placeholder="Materia"
+                  placeholderTextColor="#aaa"
+                />
+                <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>Tariffa oraria (€ / h)</Text>
+                <TextInput
+                  style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff' }}
+                  value={hourlyRate}
+                  onChangeText={setHourlyRate}
+                  placeholder={user?.hourlyRate ? String(user.hourlyRate) : "Tariffa oraria"}
+                  placeholderTextColor="#aaa"
+                  keyboardType="numeric"
+                />
+              </>
+            )}
             <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>Bio</Text>
             <TextInput
               style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff', minHeight: 60, textAlignVertical: 'top' }}

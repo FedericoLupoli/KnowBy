@@ -63,7 +63,7 @@ export default function ProfileLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // Accesso al context di autenticazione
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, setUser } = useAuth();
   // Hook di navigazione
   const navigation = useNavigation();
 
@@ -94,6 +94,7 @@ export default function ProfileLogin() {
       }
       // Aggiorna lo stato globale di login
       setIsLoggedIn(true);
+      setUser(data.user);
       // Naviga alla pagina profilo
       navigation.replace('ProfilePage');
     } catch (error) {
