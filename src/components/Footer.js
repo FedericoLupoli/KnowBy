@@ -13,7 +13,7 @@ import { CommonActions, useNavigation } from '@react-navigation/native';
  */
 const Footer = ({ activeIcon, setActiveIcon }) => {
   // Colori per icone attive/inattive
-  const activeColor = '#43a047';
+  const activeColor = '#00bfff';
   const inactiveColor = '#efeff2';
   const { isLoggedIn } = useAuth();
   const navigation = useNavigation();

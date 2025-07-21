@@ -5,13 +5,13 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import HomeScreen from './src/screens/HomeScreen';
 import ProfileLogin from './src/screens/ProfileLogin';
 import ProfilePage from './src/screens/ProfilePage';
-import ProfilePageTutor from './src/screens/ProfilePageTutor';
 import SettingsPage from './src/screens/SettingsScreen';
 import { AuthProvider } from './src/context/AuthContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 
 import * as Font from 'expo-font';
 import Header, { LoaderSplash } from './src/components/Header';
+import ProfileRegister from './src/screens/ProfileRegister';
 
 const Stack = createStackNavigator();
 
@@ -52,8 +52,8 @@ export default function App() {
           >
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="ProfileLogin" component={ProfileLogin} />
+            <Stack.Screen name="ProfileRegister" component={ProfileRegister} />
             <Stack.Screen name="ProfilePage" component={ProfilePage} />
-            <Stack.Screen name="ProfilePageTutor" component={ProfilePageTutor} />
             <Stack.Screen name="SettingsPage" component={SettingsPage} />
           </Stack.Navigator>
         </NavigationContainer>

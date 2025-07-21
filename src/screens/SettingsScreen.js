@@ -53,7 +53,7 @@ export default function SettingsScreen() {
           <View style={defaultStyle.section}>
             <Text style={defaultStyle.label}>
               <FontAwesome name='language' size={28} /> {translations[language].language}
-              <Text style={defaultStyle.green}>{translations[language].current}</Text>
+              <Text style={defaultStyle.blue}>{translations[language].current}</Text>
             </Text>
             <View style={defaultStyle.row}>
               <Text style={defaultStyle.text}>{translations[language].current}</Text>

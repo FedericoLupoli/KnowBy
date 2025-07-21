@@ -8,6 +8,7 @@ import { useLanguage } from '../context/LanguageContext';
 import translations from '../utils/translations';
 import { useAuth } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Stili per la pagina di login
 const loginStyle = {
@@ -15,7 +16,7 @@ const loginStyle = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#232b2b',
+    backgroundColor: '#00bfff',
     paddingHorizontal: 20,
     paddingTop: 10,
   },
@@ -36,10 +37,10 @@ const loginStyle = {
     fontSize: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#43a047',
+    borderColor: '#00bfff',
   },
   button: {
-    backgroundColor: '#43a047',
+    backgroundColor: '#00bfff',
     borderRadius: 12,
     paddingVertical: 12,
     paddingHorizontal: 32,
@@ -53,45 +54,62 @@ const loginStyle = {
   },
 };
 
-export default function ProfileLogin() {
-  // Stato lingua globale
+export default function ProfileRegister() {
   const { language } = useLanguage();
-  // Stato per tracciare quale icona è attiva nel footer
   const [activeIcon, setActiveIcon] = useState('user');
-  // Stato per i campi di input
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // Accesso al context di autenticazione
-  // Hook di navigazione
+  const [role, setRole] = useState('student');
+  const [bio, setBio] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { setIsLoggedIn, setUser } = useAuth();
   const navigation = useNavigation();
 
-  // Funzione di login (debug: admin/admin)
-  const handleRegister = () => {
-    
+  const handleRegister = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('http://66.118.245.111:3000/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password, role, bio: role === 'tutor' ? bio : undefined }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || 'Errore durante la registrazione');
+      } else {
+        await AsyncStorage.setItem('jwtToken', data.token);
+        setUser(data.user);
+        setIsLoggedIn(true);
+        alert('Registrazione avvenuta con successo!');
+        navigation.replace('ProfilePage');
+      }
+    } catch (e) {
+      alert('Errore di rete');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleLogingPage = () => {
-    alert('Navigation to Login Form');
-  }
+  const handleLoginPage = () => {
+    navigation.replace('ProfileLogin');
+  };
 
   return (
     <MobileOnlyView>
       <View style={defaultStyle.container}>
-        {/* Header */}
         <Header />
-
-        {/* Body principale: form di login */}
-        <View style={loginStyle.container}>
-          <Text style={[loginStyle.title, {marginTop: -150}]}>{translations[language].loginTitle}</Text>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingTop: 10 }}>
+          <Text style={{ color: '#efeff2', fontSize: 28, fontWeight: 'bold', marginBottom: 24, textAlign: 'center', marginTop: -150 }}>
+            {translations[language].registerTitle || 'Registrati'}
+          </Text>
           <TextInput
             style={loginStyle.input}
-            placeholder='Username'
-            value={email}
-            onChangeText={setUsername}
+            placeholder='Nome'
+            value={name}
+            onChangeText={setName}
             autoCorrect={false}
-            autoCapitalize="none"
-            keyboardType="username"
+            autoCapitalize="words"
           />
           <TextInput
             style={loginStyle.input}
@@ -110,20 +128,35 @@ export default function ProfileLogin() {
             autoCorrect={false}
             secureTextEntry={true}
           />
-
+          <View style={{ width: '100%', marginBottom: 16 }}>
+            <Text style={{ color: '#efeff2', marginBottom: 4 }}>Ruolo</Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <Button title="Studente" color={role === 'student' ? '#00bfff' : '#444'} onPress={() => setRole('student')} />
+              <Button title="Tutor" color={role === 'tutor' ? '#00bfff' : '#444'} onPress={() => setRole('tutor')} />
+            </View>
+          </View>
+          {role === 'tutor' && (
+            <TextInput
+              style={loginStyle.input}
+              placeholder="Bio (opzionale)"
+              value={bio}
+              onChangeText={setBio}
+              autoCorrect={false}
+              multiline
+            />
+          )}
           <Button
             style={loginStyle.button}
-            title={translations[language].register}
+            title={loading ? 'Registrazione...' : (translations[language].register || 'Registrati')}
             onPress={handleRegister}
+            disabled={loading}
           />
-          <Button 
+          <Button
             style={loginStyle.button}
-            title={translations[language].yesAccLog}
-            onPress={handleLogingPage}
+            title={translations[language].yesAccLog || 'Hai già un account? Login'}
+            onPress={handleLoginPage}
           />
         </View>
-
-        {/* Footer */}
         <Footer activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
       </View>
     </MobileOnlyView>

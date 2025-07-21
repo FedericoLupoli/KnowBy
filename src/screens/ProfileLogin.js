@@ -37,10 +37,10 @@ const loginStyle = {
     fontSize: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#43a047',
+    borderColor: '#00bfff',
   },
   button: {
-    backgroundColor: '#43a047',
+    backgroundColor: '#00bfff',
     borderRadius: 12,
     paddingVertical: 12,
     paddingHorizontal: 32,
@@ -102,7 +102,7 @@ export default function ProfileLogin() {
   };
 
   const handleRegisterPage = () => {
-    alert('Navigation to Register Form');
+    navigation.navigate('ProfileRegister');
   }
 
   return (

@@ -38,7 +38,7 @@ export default function HomeScreen() {
 
         {/* Corpo principale: loader o lista tutor */}
         {loading ? (
-          <ActivityIndicator size="large" color="#0f0" />
+          <ActivityIndicator size="large" color="#00bfff" />
         ) : (
           <View>
             <FlatList
@@ -46,7 +46,7 @@ export default function HomeScreen() {
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
                 <View style={{ marginBottom: 15, padding: 30, backgroundColor: '#222', borderRadius: 8 }}>
-                  <Text style={{ color: '#0f0', fontWeight: 'bold' }}>{item.name}</Text>
+                  <Text style={{ color: '#00bfff', fontWeight: 'bold' }}>{item.name}</Text>
                   <Text style={{ color: '#fff' }}>Materia: {item.subject}</Text>
                   <Text style={{ color: '#fff' }}>Rating: {item.rating}</Text>
                   <Text style={{ color: '#aaa' }}>{item.bio}</Text>

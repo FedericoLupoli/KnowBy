@@ -11,8 +11,8 @@ const defaultStyle = {
   header: {
     // Altezza dinamica: 18% dell'altezza dello schermo (adatta per la maggior parte dei device)
     height: height * 0.16,
-    // Verde smeraldo, più vicino al verde classico e ben visibile su sfondo scuro
-    //backgroundColor: '#43a047',
+    // Grigio più scuro rispetto al background
+    backgroundColor: '#232b2b',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%', // Assicura che l'header occupi tutta la larghezza
@@ -66,7 +66,7 @@ const defaultStyle = {
     paddingHorizontal: 24,
     paddingVertical: 10,
     borderRadius: 8,
-    backgroundColor: '#43a047', // Verde coerente con l'header
+    backgroundColor: '#00bfff', // Azzurro coerente con i dettagli
     marginHorizontal: 8,
   },
   buttonFooterText: {
@@ -96,8 +96,8 @@ const defaultStyle = {
     justifyContent: 'space-between',
     marginVertical: 8,
   },
-  green: {
-    color: '#00ff99',
+  blue: {
+    color: '#00bfff', // Azzurro per dettagli
   },
   info: {
     color: '#aaa',

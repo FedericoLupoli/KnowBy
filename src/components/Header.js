@@ -6,7 +6,7 @@ import defaultStyle from '../styles/defaultStyle';
 // Header della pagina principale con gradient e titolo
 const Header = () => (
   <LinearGradient
-    colors={['#43a047', '#232b2b']}
+    colors={['#181a1b', '#232b2b']}
     style={defaultStyle.header}
     start={{ x: 0, y: 0.3 }}
     end={{ x: 0, y: 1 }}
@@ -18,14 +18,14 @@ const Header = () => (
 // LoaderSplash: splash screen custom con logo e sfondo coerente
 export const LoaderSplash = () => (
   <LinearGradient
-    colors={['#232b2b', '#232b2b']}
+    colors={['#181a1b', '#232b2b']}
     style={{ flex: 1, alignItems: 'center', justifyContent: 'center', width: '100%' }}
-    start={{ x: 0, y: 0 }}
+    start={{ x: 0, y: 0.3 }}
     end={{ x: 0, y: 1 }}
   >
     <Text style={{
       fontFamily: 'KBFONT',
-      color: '#efeff2',
+      color: '#00bfff',
       fontSize: 64,
       fontWeight: 'bold',
       textShadowColor: '#000',
@@ -35,6 +35,7 @@ export const LoaderSplash = () => (
     }}>
       KnowBy
     </Text>
+    <Text style={{ color: '#efeff2', fontSize: 18, opacity: 0.7 }}>Caricamento...</Text>
   </LinearGradient>
 );
 
