@@ -77,7 +77,6 @@ CREATE TABLE messages (
   FOREIGN KEY (receiver_id) REFERENCES users(id)
 );
 ```
-
 ---
 
 ## Esempio di Endpoint API

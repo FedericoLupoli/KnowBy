@@ -13,7 +13,8 @@ const translations = {
     email: 'Email ',
     password: 'Password ',
     login: 'Accedi ',
-    noAccReg: 'Non hai un account? Registrati ora!'
+    noAccReg: 'Non hai un account? Registrati ora!',
+    yesAccLog: 'Hai gia un account? Accedi'
     //ProfilePage
   },
   en: {
@@ -30,7 +31,8 @@ const translations = {
     email: 'Email ',
     password: 'Password ',
     login: 'Sign in ',
-    noAccReg: 'No Account? Sign up now!'
+    noAccReg: 'No Account? Sign up now!',
+    yesAccLog: 'You have an account? Log In'
   },
 };
 

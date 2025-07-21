@@ -17,9 +17,9 @@ export default function HomeScreen() {
    useEffect(() => {
     const fetchTutors = async () => {
       try {
-        const response = await fetch('https://federicolupoli.it:3000/api/tutors');
+        const response = await fetch('http://66.118.245.111:3000/api/tutors');
         const data = await response.json();
-        setTutors(data.tutors || []);
+        setTutors(data.tutors);
       } catch (error) {
         setTutors([]);
         console.log(error);
@@ -45,7 +45,7 @@ export default function HomeScreen() {
               data={tutors}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
-                <View style={{ marginBottom: 15, padding: 10, backgroundColor: '#222', borderRadius: 8 }}>
+                <View style={{ marginBottom: 15, padding: 30, backgroundColor: '#222', borderRadius: 8 }}>
                   <Text style={{ color: '#0f0', fontWeight: 'bold' }}>{item.name}</Text>
                   <Text style={{ color: '#fff' }}>Materia: {item.subject}</Text>
                   <Text style={{ color: '#fff' }}>Rating: {item.rating}</Text>

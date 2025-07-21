@@ -11,6 +11,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import translations from '../utils/translations';
 import pkg from '../../package.json';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Social links array: ogni oggetto rappresenta un social con icona e url
 const SOCIAL_LINKS = [
@@ -28,10 +29,15 @@ export default function SettingsScreen() {
 
   const {setIsLoggedIn} = useAuth();
 
-  // Funzione per gestire il logout (placeholder)
-  const handleLogout = () => {
+  // Funzione per gestire il logout (ora funzionante)
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem('jwtToken');
     setIsLoggedIn(false);
     alert('Logout effettuato!');
+    // Naviga alla schermata di login
+    if (navigation && navigation.replace) {
+      navigation.replace('ProfileLogin');
+    }
   };
 
   return (

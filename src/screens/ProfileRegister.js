@@ -8,7 +8,6 @@ import { useLanguage } from '../context/LanguageContext';
 import translations from '../utils/translations';
 import { useAuth } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Stili per la pagina di login
 const loginStyle = {
@@ -60,49 +59,20 @@ export default function ProfileLogin() {
   // Stato per tracciare quale icona è attiva nel footer
   const [activeIcon, setActiveIcon] = useState('user');
   // Stato per i campi di input
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // Accesso al context di autenticazione
-  const { setIsLoggedIn } = useAuth();
   // Hook di navigazione
   const navigation = useNavigation();
 
   // Funzione di login (debug: admin/admin)
-  const handleLogin = async () => {
-    try {
-      const response = await fetch('http://66.118.245.111:3000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        alert(errorData.error || 'Login fallito');
-        return;
-      }
-
-      const data = await response.json();
-      // Salva il token JWT in AsyncStorage
-      if (data.token) {
-        await AsyncStorage.setItem('jwtToken', data.token);
-      }
-      // Aggiorna lo stato globale di login
-      setIsLoggedIn(true);
-      // Naviga alla pagina profilo
-      navigation.replace('ProfilePage');
-    } catch (error) {
-      alert('Errore di rete: ' + error.message);
-    }
+  const handleRegister = () => {
+    
   };
 
-  const handleRegisterPage = () => {
-    alert('Navigation to Register Form');
+  const handleLogingPage = () => {
+    alert('Navigation to Login Form');
   }
 
   return (
@@ -114,6 +84,15 @@ export default function ProfileLogin() {
         {/* Body principale: form di login */}
         <View style={loginStyle.container}>
           <Text style={[loginStyle.title, {marginTop: -150}]}>{translations[language].loginTitle}</Text>
+          <TextInput
+            style={loginStyle.input}
+            placeholder='Username'
+            value={email}
+            onChangeText={setUsername}
+            autoCorrect={false}
+            autoCapitalize="none"
+            keyboardType="username"
+          />
           <TextInput
             style={loginStyle.input}
             placeholder={translations[language].email}
@@ -131,15 +110,16 @@ export default function ProfileLogin() {
             autoCorrect={false}
             secureTextEntry={true}
           />
+
           <Button
             style={loginStyle.button}
-            title={translations[language].login}
-            onPress={handleLogin}
+            title={translations[language].register}
+            onPress={handleRegister}
           />
           <Button 
             style={loginStyle.button}
-            title={translations[language].noAccReg}
-            onPress={handleRegisterPage}
+            title={translations[language].yesAccLog}
+            onPress={handleLogingPage}
           />
         </View>
 
