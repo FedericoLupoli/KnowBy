@@ -70,7 +70,7 @@ export default function ProfileLogin() {
   // Funzione di login (debug: admin/admin)
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://66.118.245.111:3000/api/auth/login', {
+      const response = await fetch('http://66.118.245.111:3000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

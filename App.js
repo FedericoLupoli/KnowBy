@@ -11,17 +11,32 @@ import { AuthProvider } from './src/context/AuthContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 
 import * as Font from 'expo-font';
+import Header, { LoaderSplash } from './src/components/Header';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     Font.loadAsync({
       'KBFONT': require('./assets/fonts/Aladin-Regular.ttf'),
     }).then(() => setFontsLoaded(true));
   }, []);
+
+  useEffect(() => {
+    // Mostra splash per almeno 1,5s
+    if (fontsLoaded) {
+      const timer = setTimeout(() => setShowSplash(false), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded || showSplash) {
+    // Mostra splash screen custom finché i font non sono caricati o per almeno 1,5s
+    return <LoaderSplash />;
+  }
 
   return (
     /* LanguageProvider gestisce la lingua globale (it/en) */

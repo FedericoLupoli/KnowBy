@@ -15,4 +15,27 @@ const Header = () => (
   </LinearGradient>
 );
 
+// LoaderSplash: splash screen custom con logo e sfondo coerente
+export const LoaderSplash = () => (
+  <LinearGradient
+    colors={['#232b2b', '#232b2b']}
+    style={{ flex: 1, alignItems: 'center', justifyContent: 'center', width: '100%' }}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 0, y: 1 }}
+  >
+    <Text style={{
+      fontFamily: 'KBFONT',
+      color: '#efeff2',
+      fontSize: 64,
+      fontWeight: 'bold',
+      textShadowColor: '#000',
+      textShadowOffset: { width: 0, height: 2 },
+      textShadowRadius: 4,
+      marginBottom: 24,
+    }}>
+      KnowBy
+    </Text>
+  </LinearGradient>
+);
+
 export default Header; 
