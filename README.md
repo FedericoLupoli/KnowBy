@@ -66,7 +66,7 @@ assets/
 
 ## 🔗 Integrazione API
 
-L’app si collega al backend [KnowByAPI](https://github.com/tuo-utente/KnowByAPI) per mostrare tutor, recensioni, messaggi e pagamenti. Consulta la documentazione API per dettagli su endpoint e parametri.
+L’app si collega al backend [KnowByAPI](https://github.com/tuo-utente/KnowByAPI) per mostrare tutor, recensioni e messaggi. Consulta la documentazione API per dettagli su endpoint e parametri.
 
 ---
 
@@ -106,4 +106,4 @@ Questo progetto è distribuito sotto licenza MIT. Vedi il file LICENSE per detta
 
 ---
 
-**KnowByV2** © 2024 – Made with ❤️ by [Il tuo nome o team] 
+**KnowBy** © 2025 – Made with ❤️ by Federico Lupoli

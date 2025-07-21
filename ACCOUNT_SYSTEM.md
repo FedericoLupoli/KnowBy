@@ -2,7 +2,6 @@
 
 KnowBy è una piattaforma mobile di ricerca tutoring per ogni materia scolastica. Ogni persona può registrarsi come **utente** (studente) o **tutor**. L’app prevede:
 - Sistema di recensioni e votazioni dei tutor da parte degli utenti
-- Servizio di pagamento in-app per le lezioni
 - Messaggistica tra tutor e studente
 - (In futuro: altre funzionalità evolute)
 
@@ -18,7 +17,6 @@ Questa guida spiega come strutturare il sistema di account e autenticazione per 
 - **Autenticazione:** JWT (JSON Web Token)
 - **Sicurezza:** HTTPS, hashing password, CORS, rate limiting
 - **Servizi aggiuntivi:**
-  - Integrazione gateway di pagamento (es. Stripe, PayPal)
   - Sistema di messaggistica (es. WebSocket, Firebase, o custom)
   - Gestione ruoli (utente/tutor)
   - Sistema di recensioni e voti
@@ -78,8 +76,6 @@ CREATE TABLE messages (
   FOREIGN KEY (sender_id) REFERENCES users(id),
   FOREIGN KEY (receiver_id) REFERENCES users(id)
 );
-
--- Per i pagamenti, valuta l’uso di una tabella transazioni e l’integrazione con un gateway esterno
 ```
 
 ---
@@ -93,7 +89,6 @@ CREATE TABLE messages (
 - `GET /api/tutors` — Ricerca tutor per materia
 - `POST /api/message` — Invia un messaggio
 - `GET /api/messages` — Recupera conversazioni
-- `POST /api/payment` — Avvia pagamento lezione (integrazione gateway)
 
 ---
 
@@ -104,7 +99,7 @@ CREATE TABLE messages (
 - **CORS:** limita i domini che possono accedere all’API
 - **Rate limiting:** previene brute force
 - **Validazione input:** sempre, sia lato client che server
-- **Controllo ruoli:** verifica che solo i tutor possano ricevere recensioni/pagamenti
+- **Controllo ruoli:** verifica che solo i tutor possano ricevere recensioni
 
 ---
 
@@ -114,7 +109,7 @@ CREATE TABLE messages (
 - Salva il JWT in modo sicuro (es. AsyncStorage)
 - Invia il JWT nell’header `Authorization` per le richieste protette
 - Mostra UI differenziata per studente/tutor
-- Gestisci la logica di ricerca, recensioni, messaggi e pagamenti tramite chiamate API
+- Gestisci la logica di ricerca, recensioni e messaggi tramite chiamate API
 
 ---
 
@@ -124,7 +119,6 @@ CREATE TABLE messages (
 - Prevedi endpoint per reset password e verifica email
 - Logga gli accessi e gli errori lato server
 - Aggiorna regolarmente le dipendenze del backend
-- Per i pagamenti, usa provider affidabili (Stripe, PayPal) e non gestire mai direttamente i dati delle carte
 - Per la messaggistica, valuta WebSocket o servizi esterni per real-time
 
 ---
@@ -134,7 +128,6 @@ CREATE TABLE messages (
 - [ ] Ricerca tutor per materia
 - [ ] Sistema recensioni e voti
 - [ ] Messaggistica tutor-studente
-- [ ] Pagamenti in-app
 - [ ] Notifiche push
 - [ ] Dashboard tutor e storico lezioni
 - [ ] Funzionalità avanzate (da definire)
@@ -145,7 +138,6 @@ CREATE TABLE messages (
 - [Node.js + MySQL + JWT Tutorial](https://jasonwatmore.com/post/2020/07/18/nodejs-mysql-authentication-api-with-jwt)
 - [bcrypt npm](https://www.npmjs.com/package/bcrypt)
 - [jsonwebtoken npm](https://www.npmjs.com/package/jsonwebtoken)
-- [Stripe API](https://stripe.com/docs/api)
 - [WebSocket per Node.js](https://www.npmjs.com/package/ws)
 
 ---

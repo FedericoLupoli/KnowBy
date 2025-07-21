@@ -20,23 +20,13 @@ const defaultStyle = {
     paddingTop: 20,
   },
   headerText: {
+    fontFamily: 'KBFONT',
     color: '#efeff2',
     // Font size dinamico: proporzionale alla larghezza dello schermo
-    fontSize: width * 0.09, // Circa 36 su uno schermo da 400px
-    paddingHorizontal: width * 0.05, // Padding orizzontale dinamico
+    fontSize: width * 0.12, // Circa 36 su uno schermo da 400px
+    paddingHorizontal: width * 0.025, // Padding orizzontale dinamico
     paddingVertical: height * 0.025, // Padding verticale dinamico
     fontWeight: 'bold',
-    textShadowColor: '#000',
-    textShadowOffset: { width: 0, height: 2 },
-    textShadowRadius: 4,
-  },
-  headerSubtitle: {
-    color: '#000000',
-    // Font size dinamico: proporzionale alla larghezza dello schermo
-    fontSize: width * 0.05, // Circa 36 su uno schermo da 400px
-    paddingHorizontal: width * 0.05, // Padding orizzontale dinamico
-    paddingVertical: height * 0.025, // Padding verticale dinamico
-    fontWeight: 'italic',
     textShadowColor: '#000',
     textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 4,

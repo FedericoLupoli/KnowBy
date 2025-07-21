@@ -7,9 +7,6 @@ const InfoApp = ({ version, label }) => (
   <View style={defaultStyle.section}>
     <Text style={defaultStyle.label}><FontAwesome name='copyright' size={28}/>    {label}</Text>
     <Text style={defaultStyle.info}>{`KnowBy v${version}\nMade by Federico Lupoli`}</Text>
-    <Text style={defaultStyle.info}>
-      <FontAwesome name='cc-mastercard' size={28} /> <FontAwesome name='cc-visa' size={28} />
-    </Text>
   </View>
 );
 

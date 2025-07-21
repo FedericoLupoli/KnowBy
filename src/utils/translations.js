@@ -1,5 +1,6 @@
 const translations = {
   it: {
+    headerSubtitle: 'Fai un upgrade alle tue conoscenze',
     mobileOnly: 'KnowBy è disponibile solo su smartphone Android/iOS. Per favore, accedi da un telefono.',
     language: 'Lingua ',
     current: 'Italiano ',
@@ -16,6 +17,7 @@ const translations = {
     //ProfilePage
   },
   en: {
+    headerSubtitle: 'Fai un upgrade alle tue conoscenze',
     mobileOnly: 'KnowBy is only available on Android/iOS smartphones. Please log in from a phone.',
     language: 'Language ',
     current: 'English ',

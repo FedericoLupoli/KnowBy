@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
@@ -9,9 +10,19 @@ import SettingsPage from './src/screens/SettingsScreen';
 import { AuthProvider } from './src/context/AuthContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 
+import * as Font from 'expo-font';
+
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    Font.loadAsync({
+      'KBFONT': require('./assets/fonts/Aladin-Regular.ttf'),
+    }).then(() => setFontsLoaded(true));
+  }, []);
+
   return (
     /* LanguageProvider gestisce la lingua globale (it/en) */
     <LanguageProvider>

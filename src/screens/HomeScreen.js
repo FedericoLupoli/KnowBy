@@ -4,12 +4,10 @@ import defaultStyle from '../styles/defaultStyle';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MobileOnlyView from '../components/MobileOnlyView';
-import { useLanguage } from '../context/LanguageContext';
-import translations from '../utils/translations';
+
 
 export default function HomeScreen() {
-  // Stato lingua globale
-  const { language } = useLanguage();
+
   // Stato per tracciare quale icona è attiva nel footer
   const [activeIcon, setActiveIcon] = useState('home');
 
@@ -36,7 +34,7 @@ export default function HomeScreen() {
     <MobileOnlyView>
       <View style={defaultStyle.container}>
         {/* Header */}
-        <HeaderWithSubtitle />
+        <Header />
 
         {/* Corpo principale: loader o lista tutor */}
         {loading ? (
