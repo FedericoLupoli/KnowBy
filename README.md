@@ -66,7 +66,7 @@ assets/
 
 ## 🔗 Integrazione API
 
-L’app si collega al backend [KnowByAPI](https://github.com/tuo-utente/KnowByAPI) per mostrare tutor, recensioni e messaggi. Consulta la documentazione API per dettagli su endpoint e parametri.
+L’app si collega al backend [KnowByAPI](https://github.com/FedericoLupoli/KnowByAPI) per mostrare tutor, recensioni e messaggi. Consulta la documentazione API per dettagli su endpoint e parametri.
 
 ---
 
