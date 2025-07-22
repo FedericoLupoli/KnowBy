@@ -58,6 +58,13 @@ export default function TutorCard({ tutor }) {
           {tutor.bio}
         </Text>
       </View>
+      <TouchableOpacity
+        onPress={handleMessage}
+        style={{ marginLeft: 16, borderRadius: 50, padding: 10 }}
+        activeOpacity={0.7}
+      >
+        <FontAwesome name="envelope" size={20} color="#00bfff" />
+      </TouchableOpacity>
       
     </View>
   );
