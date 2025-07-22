@@ -81,7 +81,13 @@ export default function ProfileRegister() {
       });
       const data = await res.json();
       if (!res.ok) {
-        alert(data.error || 'Errore durante la registrazione');
+        if (data.error) {
+          alert(data.error);
+        } else if (data.errors) {
+          alert(data.errors.map(e => e.msg).join(', '));
+        } else {
+          alert('Errore durante la registrazione');
+        }
       } else {
         await AsyncStorage.setItem('jwtToken', data.token);
         setUser(data.user);

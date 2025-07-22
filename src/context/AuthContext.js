@@ -21,7 +21,8 @@ export function AuthProvider({ children }) {
             setUser(data.user || data); // accetta entrambi i formati
             setIsLoggedIn(true);
           } else {
-            if (res.status === 401) {
+            const data = await res.json();
+            if (data.error) {
               await AsyncStorage.removeItem('jwtToken');
             }
             setUser(null);

@@ -81,13 +81,17 @@ export default function ProfileLogin() {
         }),
       });
 
+      const data = await response.json();
       if (!response.ok) {
-        const errorData = await response.json();
-        alert(errorData.error || 'Login fallito');
+        if (data.error) {
+          alert(data.error);
+        } else if (data.errors) {
+          alert(data.errors.map(e => e.msg).join(', '));
+        } else {
+          alert('Login fallito');
+        }
         return;
       }
-
-      const data = await response.json();
       // Salva il token JWT in AsyncStorage
       if (data.token) {
         await AsyncStorage.setItem('jwtToken', data.token);

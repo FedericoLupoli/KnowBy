@@ -438,6 +438,26 @@ Tutti gli endpoint restituiscono errori nel seguente formato:
 
 ---
 
+## Sicurezza e Best Practice
+
+- **Validazione input**: Tutti gli endpoint che accettano dati dall’utente usano validazione avanzata con express-validator. Gli errori di validazione restituiscono status 400 e dettagli sugli errori.
+- **CORS restrittivo**: Solo i domini autorizzati possono accedere alle API.
+- **Rate limiting**: Gli endpoint di login e registrazione sono protetti da rate limiting per prevenire brute force.
+- **Ruoli e permessi**: La logica di controllo ruoli è centralizzata in middleware dedicati (`middlewares/roleMiddleware.js`).
+- **Logging avanzato**: Gli accessi, errori e tentativi sospetti sono loggati tramite il sistema di logging del backend.
+
+### Esempio di errore di validazione
+```json
+{
+  "errors": [
+    { "msg": "Email non valida", "param": "email", "location": "body" },
+    { "msg": "Password troppo corta", "param": "password", "location": "body" }
+  ]
+}
+```
+
+---
+
 ## Gestione Utente
 
 La logica di modifica utente (PUT /users/:id) e di recupero dati utente (GET /users/:id) si trova nel file:

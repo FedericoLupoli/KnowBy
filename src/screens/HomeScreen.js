@@ -19,11 +19,16 @@ export default function HomeScreen() {
       try {
         const response = await fetch('http://66.118.245.111:3000/api/tutors');
         const data = await response.json();
+        if (!response.ok) {
+          if (data.error) throw new Error(data.error);
+          if (data.errors) throw new Error(data.errors.map(e => e.msg).join(', '));
+          throw new Error('Errore sconosciuto');
+        }
         setTutors(data.tutors);
       } catch (error) {
         setTutors([]);
         console.log(error);
-      }finally {
+      } finally {
         setLoading(false);
       }
     };

@@ -61,9 +61,22 @@ export default function ProfilePage() {
           hourlyRate: user.role === 'tutor' && hourlyRate ? Number(hourlyRate) : undefined,
         }),
       });
-      const result = await res.json();
+      let result;
+      try {
+        result = await res.json();
+      } catch (jsonErr) {
+        const text = await res.text();
+        console.log('Risposta non JSON:', text);
+        throw new Error('Risposta non JSON: ' + text);
+      }
       if (!res.ok) {
-        Alert.alert('Errore', result.error || 'Errore durante il salvataggio');
+        if (result.error) {
+          Alert.alert('Errore', result.error);
+        } else if (result.errors) {
+          Alert.alert('Errore', result.errors.map(e => e.msg).join(', '));
+        } else {
+          Alert.alert('Errore', 'Errore durante il salvataggio');
+        }
       } else {
         // 2. Recupera i dati aggiornati (autenticato)
         const resUser = await fetch(`http://66.118.245.111:3000/api/users/${user.id}`, {
@@ -76,7 +89,8 @@ export default function ProfilePage() {
         Alert.alert('Successo', result.message || 'Profilo aggiornato!');
       }
     } catch (e) {
-      Alert.alert('Errore', 'Errore di rete');
+      console.log('Errore di rete o fetch:', e);
+      Alert.alert('Errore di rete', typeof e === 'object' ? JSON.stringify(e) : String(e));
     } finally {
       setLoading(false);
     }
