@@ -12,6 +12,7 @@ import { useAuth } from '../context/AuthContext';
 import translations from '../utils/translations';
 import pkg from '../../package.json';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 // Social links array: ogni oggetto rappresenta un social con icona e url
 const SOCIAL_LINKS = [
@@ -27,7 +28,15 @@ export default function SettingsScreen() {
   // Stato per tracciare quale icona è attiva nel footer
   const [activeIcon, setActiveIcon] = useState('settings');
 
-  const {setIsLoggedIn} = useAuth();
+  const { setIsLoggedIn, user } = useAuth();
+  const navigation = useNavigation();
+
+  // Redirect automatico se non autenticato
+  React.useEffect(() => {
+    if (!user) {
+      navigation.replace('ProfileLogin');
+    }
+  }, [user, navigation]);
 
   // Funzione per gestire il logout (ora funzionante)
   const handleLogout = async () => {

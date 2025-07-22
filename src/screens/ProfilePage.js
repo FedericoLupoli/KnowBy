@@ -9,11 +9,13 @@ import { useLanguage } from '../context/LanguageContext';
 import translations from '../utils/translations';
 import { useAuth } from '../context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ProfilePage() {
   // Stato lingua globale
   const { language } = useLanguage();
   const { user, setUser } = useAuth();
+  const navigation = useNavigation();
   // Stato per tracciare quale icona è attiva nel footer
   const [activeIcon, setActiveIcon] = useState('user');
   const [name, setName] = useState(user?.name || '');
@@ -24,21 +26,16 @@ export default function ProfilePage() {
   const [subject, setSubject] = useState(user?.subject || '');
   const [hourlyRate, setHourlyRate] = useState(user?.hourlyRate ? String(user.hourlyRate) : '');
 
+  // Redirect automatico se non autenticato
+  React.useEffect(() => {
+    if (!user) {
+      navigation.replace('ProfileLogin');
+    }
+  }, [user, navigation]);
 
   if (!user) {
-    return (
-      <MobileOnlyView>
-        <View style={defaultStyle.container}>
-          <Header />
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-            <Text style={{ color: 'red', fontSize: 18, textAlign: 'center' }}>
-              Nessun utente loggato.
-            </Text>
-          </View>
-          <Footer activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
-        </View>
-      </MobileOnlyView>
-    );
+    // Evita di mostrare la pagina se sta per reindirizzare
+    return null;
   }
 
   const handleSave = async () => {
