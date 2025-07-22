@@ -12,6 +12,7 @@ import { LanguageProvider } from './src/context/LanguageContext';
 import * as Font from 'expo-font';
 import Header, { LoaderSplash } from './src/components/Header';
 import ProfileRegister from './src/screens/ProfileRegister';
+import SearchScreen from './src/screens/SearchScreen';
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,7 @@ export default function App() {
             }}
           >
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="SearchScreen" component={SearchScreen} />
             <Stack.Screen name="ProfileLogin" component={ProfileLogin} />
             <Stack.Screen name="ProfileRegister" component={ProfileRegister} />
             <Stack.Screen name="ProfilePage" component={ProfilePage} />

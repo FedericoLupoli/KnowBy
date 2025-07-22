@@ -38,6 +38,11 @@ const Footer = ({ activeIcon, setActiveIcon }) => {
     );
   };
 
+  const handleSearchPress = () => {
+    setActiveIcon('search');
+    navigation.navigate('SearchScreen');
+  };
+
   const handleSettingsPress = () => {
     setActiveIcon('settings');
     navigation.navigate('SettingsPage');
@@ -48,7 +53,7 @@ const Footer = ({ activeIcon, setActiveIcon }) => {
       <TouchableOpacity style={defaultStyle.iconButton} onPress={handleHomePress}>
         <FontAwesome name='home' size={28} color={activeIcon === 'home' ? activeColor : inactiveColor} />
       </TouchableOpacity>
-      <TouchableOpacity style={defaultStyle.iconButton} onPress={() => setActiveIcon('search')}>
+      <TouchableOpacity style={defaultStyle.iconButton} onPress={handleSearchPress}>
         <MaterialIcons name="search" size={28} color={activeIcon === 'search' ? activeColor : inactiveColor} />
       </TouchableOpacity>
       <TouchableOpacity style={defaultStyle.iconButton} onPress={handleUserPress}>

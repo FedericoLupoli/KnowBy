@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity, Alert, View } from 'react-native';  
 import { LinearGradient } from 'expo-linear-gradient';
 import defaultStyle from '../styles/defaultStyle';
+import { FontAwesome } from '@expo/vector-icons';
 
 // Header della pagina principale con gradient e titolo
 const Header = () => (
@@ -11,7 +12,16 @@ const Header = () => (
     start={{ x: 0, y: 0.3 }}
     end={{ x: 0, y: 1 }}
   >
-    <Text style={defaultStyle.headerText}>KnowBy</Text>
+    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', paddingHorizontal: 16 }}>
+      <Text style={defaultStyle.headerText}>KnowBy</Text>
+      <TouchableOpacity
+        onPress={() => Alert.alert('Commenti', 'Funzione commenti da implementare')}
+        style={{ borderRadius: 50, padding: 10 }}
+        activeOpacity={0.7}
+      >
+        <FontAwesome name="envelope" size={20} color="#ffffff" />
+      </TouchableOpacity>
+    </View>
   </LinearGradient>
 );
 
