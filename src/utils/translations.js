@@ -118,7 +118,8 @@ const translations = {
       authenticationFailed: 'Autenticazione fallita. Effettua di nuovo il login.',
       connectionTimeout: 'Timeout di connessione. Controlla la tua connessione internet.',
       networkError: 'Errore di rete. Controlla la tua connessione internet.',
-      storageError: 'Errore di storage.'
+      storageError: 'Errore di storage.',
+      incompleteUserData: 'Dati utente incompleti. Effettua di nuovo il login.'
     }
   },
 
@@ -241,7 +242,8 @@ const translations = {
       authenticationFailed: 'Authentication failed. Please login again.',
       connectionTimeout: 'Connection timeout. Please check your internet connection.',
       networkError: 'Network error. Please check your internet connection.',
-      storageError: 'Storage error occurred.'
+      storageError: 'Storage error occurred.',
+      incompleteUserData: 'Incomplete user data. Please login again.'
     }
   }
 };

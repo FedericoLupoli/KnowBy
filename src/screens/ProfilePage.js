@@ -4,6 +4,7 @@ import defaultStyle from '../styles/defaultStyle';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MobileOnlyView from '../components/MobileOnlyView';
+import AuthErrorBanner from '../components/AuthErrorBanner';
 import { useLanguage } from '../context/LanguageContext';
 import translations from '../utils/translations';
 import { useAuth } from '../context/AuthContext';
@@ -146,6 +147,9 @@ export default function ProfilePage() {
       <View style={defaultStyle.container}>
         {/* Header */}
         <Header />
+        
+        {/* Banner per errori di autenticazione */}
+        <AuthErrorBanner />
 
         {/* Body principale: personalizzazione profilo studente (debug) */}
         <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: 'center', padding: 20 }}>

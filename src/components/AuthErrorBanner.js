@@ -23,6 +23,8 @@ const AuthErrorBanner = () => {
         return translations[language].auth.networkError;
       case 'STORAGE_ERROR':
         return translations[language].auth.storageError;
+      case 'INCOMPLETE_USER_DATA':
+        return translations[language].auth.incompleteUserData;
       default:
         return authError; // Fallback per messaggi custom
     }

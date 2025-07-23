@@ -4,6 +4,7 @@ import defaultStyle from '../styles/defaultStyle';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MobileOnlyView from '../components/MobileOnlyView';
+import AuthErrorBanner from '../components/AuthErrorBanner';
 import { useLanguage } from '../context/LanguageContext';
 import translations from '../utils/translations';
 import { useAuth } from '../context/AuthContext';
@@ -111,6 +112,10 @@ export default function ProfileRegister() {
     <MobileOnlyView>
       <View style={defaultStyle.container}>
         <Header />
+        
+        {/* Banner per errori di autenticazione */}
+        <AuthErrorBanner />
+        
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingTop: 10 }}>
           <Text style={{ color: '#efeff2', fontSize: 28, fontWeight: 'bold', marginBottom: 24, textAlign: 'center', marginTop: -150 }}>
             {translations[language].profileRegister.title}

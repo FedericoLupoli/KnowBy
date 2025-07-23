@@ -49,7 +49,8 @@ export function AuthProvider({ children }) {
               setAuthError(null);
             } else {
               // Dati utente incompleti, rimuovi token
-              console.log('Dati utente incompleti:', userData);
+              console.log('Dati utente incompleti ricevuti:', userData);
+              console.log('Response completa:', data);
               await AsyncStorage.removeItem('jwtToken');
               setUser(null);
               setIsLoggedIn(false);
