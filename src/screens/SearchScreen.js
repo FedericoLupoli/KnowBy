@@ -5,8 +5,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MobileOnlyView from '../components/MobileOnlyView';
 import TutorCard from '../components/TutorCard';
+import { useLanguage } from '../context/LanguageContext';
+import translations from '../utils/translations';
 
 export default function SearchScreen() {
+  const { language } = useLanguage();
   const [activeIcon, setActiveIcon] = useState('search');
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
@@ -31,7 +34,7 @@ export default function SearchScreen() {
       const res = await fetch(url);
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || 'Errore nella ricerca');
+        setError(data.error || translations[language].search.searchError);
       } else {
         const tutors = data.tutors || [];
         const sorted = [...tutors].sort((a, b) => {
@@ -40,8 +43,8 @@ export default function SearchScreen() {
         });
         setResults(sorted);
       }
-    } catch (e) {
-      setError('Errore di rete');
+    } catch (_e) {
+      setError(translations[language].search.networkError);
     } finally {
       setLoading(false);
     }
@@ -52,12 +55,12 @@ export default function SearchScreen() {
       <View style={defaultStyle.container}>
         <Header />
         <View style={{ padding: 18 }}>
-          <Text style={{ color: '#00bfff', fontSize: 22, fontWeight: 'bold', marginBottom: 12 }}>🔍 Cerca Tutor</Text>
+          <Text style={{ color: '#00bfff', fontSize: 22, fontWeight: 'bold', marginBottom: 12 }}>🔍 {translations[language].search.title}</Text>
           <TextInput
             style={{
               backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#00bfff',
             }}
-            placeholder="Nome"
+            placeholder={translations[language].search.namePlaceholder}
             value={name}
             onChangeText={setName}
           />
@@ -65,7 +68,7 @@ export default function SearchScreen() {
             style={{
               backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#00bfff',
             }}
-            placeholder="Materia"
+            placeholder={translations[language].search.subjectPlaceholder}
             value={subject}
             onChangeText={setSubject}
           />
@@ -73,7 +76,7 @@ export default function SearchScreen() {
             style={{
               backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#00bfff',
             }}
-            placeholder="Location"
+            placeholder={translations[language].search.locationPlaceholder}
             value={location}
             onChangeText={setLocation}
           />
@@ -81,12 +84,12 @@ export default function SearchScreen() {
             style={{
               backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff',
             }}
-            placeholder="Rating (1-5)"
+            placeholder={translations[language].search.ratingPlaceholder}
             value={rating}
             onChangeText={setRating}
             keyboardType="numeric"
           />
-          <Button title={loading ? 'Ricerca...' : 'Cerca'} color="#00bfff" onPress={handleSearch} disabled={loading || (!name && !subject && !location && !rating)} />
+          <Button title={loading ? translations[language].search.searching : translations[language].search.search} color="#00bfff" onPress={handleSearch} disabled={loading || (!name && !subject && !location && !rating)} />
           {error ? <Text style={{ color: 'red', marginTop: 10 }}>{error}</Text> : null}
         </View>
         {loading ? (

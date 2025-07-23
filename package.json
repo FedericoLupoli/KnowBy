@@ -1,7 +1,7 @@
 {
   "name": "knowbyv2",
   "license": "MIT",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "index.js",
   "scripts": {
     "start": "REACT_NATIVE_PACKAGER_HOSTNAME=$(ipconfig getifaddr en0 || ipconfig getifaddr en1) npx expo start --lan",

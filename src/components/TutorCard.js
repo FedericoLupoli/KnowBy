@@ -1,10 +1,17 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { useLanguage } from '../context/LanguageContext';
+import translations from '../utils/translations';
 
 export default function TutorCard({ tutor }) {
+  const { language } = useLanguage();
+  
   const handleMessage = () => {
-    Alert.alert('Messaggio', `Funzione invio messaggio a ${tutor.name} (da implementare)`);
+    Alert.alert(
+      translations[language].tutorCard.messageAlert, 
+      translations[language].tutorCard.messageFunction.replace('{name}', tutor.name)
+    );
   };
 
   return (
@@ -39,7 +46,7 @@ export default function TutorCard({ tutor }) {
             </Text>
           ) : (
             <Text style={{ color: '#aaa', fontSize: 13, marginRight: 10 }}>
-              Materia non specificata
+              {translations[language].tutorCard.subjectNotSpecified}
             </Text>
           )}
           <Text style={{ color: '#ffd700', fontWeight: 'bold', fontSize: 15 }}>

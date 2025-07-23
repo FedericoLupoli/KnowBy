@@ -69,7 +69,7 @@ export default function ProfileRegister() {
 
   const handleRegister = async () => {
     if (role === 'tutor' && !subject.trim()) {
-      alert('La materia è obbligatoria per i tutor');
+      alert(translations[language].profileRegister.subjectRequired);
       return;
     }
     setLoading(true);
@@ -86,17 +86,17 @@ export default function ProfileRegister() {
         } else if (data.errors) {
           alert(data.errors.map(e => e.msg).join(', '));
         } else {
-          alert('Errore durante la registrazione');
+          alert(translations[language].profileRegister.registrationError);
         }
       } else {
         await AsyncStorage.setItem('jwtToken', data.token);
         setUser(data.user);
         setIsLoggedIn(true);
-        alert('Registrazione avvenuta con successo!');
+        alert(translations[language].profileRegister.registrationSuccess);
         navigation.replace('ProfilePage');
       }
-    } catch (e) {
-      alert('Errore di rete');
+    } catch (_e) {
+      alert(translations[language].profileRegister.networkError);
     } finally {
       setLoading(false);
     }
@@ -112,11 +112,11 @@ export default function ProfileRegister() {
         <Header />
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingTop: 10 }}>
           <Text style={{ color: '#efeff2', fontSize: 28, fontWeight: 'bold', marginBottom: 24, textAlign: 'center', marginTop: -150 }}>
-            {translations[language].registerTitle || 'Registrati'}
+            {translations[language].profileRegister.title}
           </Text>
           <TextInput
             style={loginStyle.input}
-            placeholder='Nome'
+            placeholder={translations[language].profileRegister.name}
             value={name}
             onChangeText={setName}
             autoCorrect={false}
@@ -124,7 +124,7 @@ export default function ProfileRegister() {
           />
           <TextInput
             style={loginStyle.input}
-            placeholder={translations[language].email}
+            placeholder={translations[language].profileRegister.email}
             value={email}
             onChangeText={setEmail}
             autoCorrect={false}
@@ -133,31 +133,31 @@ export default function ProfileRegister() {
           />
           <TextInput
             style={loginStyle.input}
-            placeholder={translations[language].password}
+            placeholder={translations[language].profileRegister.password}
             value={password}
             onChangeText={setPassword}
             autoCorrect={false}
             secureTextEntry={true}
           />
           <View style={{ width: '100%', marginBottom: 16 }}>
-            <Text style={{ color: '#efeff2', marginBottom: 4 }}>Ruolo</Text>
+            <Text style={{ color: '#efeff2', marginBottom: 4 }}>{translations[language].profileRegister.role}</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Button title="Studente" color={role === 'student' ? '#00bfff' : '#444'} onPress={() => setRole('student')} />
-              <Button title="Tutor" color={role === 'tutor' ? '#00bfff' : '#444'} onPress={() => setRole('tutor')} />
+              <Button title={translations[language].profileRegister.student} color={role === 'student' ? '#00bfff' : '#444'} onPress={() => setRole('student')} />
+              <Button title={translations[language].profileRegister.tutor} color={role === 'tutor' ? '#00bfff' : '#444'} onPress={() => setRole('tutor')} />
             </View>
           </View>
           {role === 'tutor' && (
             <>
               <TextInput
                 style={loginStyle.input}
-                placeholder="Materia (obbligatoria)"
+                placeholder={translations[language].profileRegister.subject}
                 value={subject}
                 onChangeText={setSubject}
                 autoCorrect={false}
               />
               <TextInput
                 style={loginStyle.input}
-                placeholder="Bio (opzionale)"
+                placeholder={translations[language].profileRegister.bio}
                 value={bio}
                 onChangeText={setBio}
                 autoCorrect={false}
@@ -167,13 +167,13 @@ export default function ProfileRegister() {
           )}
           <Button
             style={loginStyle.button}
-            title={loading ? 'Registrazione...' : (translations[language].register || 'Registrati')}
+            title={loading ? translations[language].profileRegister.registering : translations[language].profileRegister.register}
             onPress={handleRegister}
             disabled={loading}
           />
           <Button
             style={loginStyle.button}
-            title={translations[language].yesAccLog || 'Hai già un account? Login'}
+            title={translations[language].profileRegister.alreadyHaveAccount}
             onPress={handleLoginPage}
           />
         </View>

@@ -5,9 +5,13 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MobileOnlyView from '../components/MobileOnlyView';
 import TutorCard from '../components/TutorCard';
+import AuthErrorBanner from '../components/AuthErrorBanner';
+import { useLanguage } from '../context/LanguageContext';
+import translations from '../utils/translations';
 
 
 export default function HomeScreen() {
+  const { language } = useLanguage();
 
   // Stato per tracciare quale icona è attiva nel footer
   const [activeIcon, setActiveIcon] = useState('home');
@@ -23,7 +27,7 @@ export default function HomeScreen() {
         if (!response.ok) {
           if (data.error) throw new Error(data.error);
           if (data.errors) throw new Error(data.errors.map(e => e.msg).join(', '));
-          throw new Error('Errore sconosciuto');
+          throw new Error(translations[language].home.unknownError);
         }
         // Ordina: prima pro=true, poi rating decrescente
         const sorted = [...(data.tutors || [])].sort((a, b) => {
@@ -39,13 +43,16 @@ export default function HomeScreen() {
       }
     };
     fetchTutors();
-   }, []);
+   }, [language]);
 
   return (
     <MobileOnlyView>
       <View style={defaultStyle.container}>
         {/* Header */}
         <Header />
+        
+        {/* Auth Error Banner */}
+        <AuthErrorBanner />
 
         {/* Corpo principale: loader o lista tutor */}
         {loading ? (

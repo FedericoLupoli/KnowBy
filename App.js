@@ -1,20 +1,46 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import ProfileLogin from './src/screens/ProfileLogin';
 import ProfilePage from './src/screens/ProfilePage';
 import SettingsPage from './src/screens/SettingsScreen';
-import { AuthProvider } from './src/context/AuthContext';
+import { AuthProvider, useAuth } from './src/context/AuthContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 
 import * as Font from 'expo-font';
-import Header, { LoaderSplash } from './src/components/Header';
+import { LoaderSplash } from './src/components/Header';
 import ProfileRegister from './src/screens/ProfileRegister';
 import SearchScreen from './src/screens/SearchScreen';
 
 const Stack = createStackNavigator();
+
+// Componente interno che ha accesso ai context
+function AppNavigator() {
+  const { isLoading } = useAuth();
+  
+  if (isLoading) {
+    return <LoaderSplash />;
+  }
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
+        }}
+      >
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen name="ProfileLogin" component={ProfileLogin} />
+        <Stack.Screen name="ProfileRegister" component={ProfileRegister} />
+        <Stack.Screen name="ProfilePage" component={ProfilePage} />
+        <Stack.Screen name="SettingsPage" component={SettingsPage} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -44,21 +70,7 @@ export default function App() {
     <LanguageProvider>
       {/* AuthProvider gestisce l'autenticazione */}
       <AuthProvider>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerShown: false,
-              cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
-            }}
-          >
-            <Stack.Screen name="HomeScreen" component={HomeScreen} />
-            <Stack.Screen name="SearchScreen" component={SearchScreen} />
-            <Stack.Screen name="ProfileLogin" component={ProfileLogin} />
-            <Stack.Screen name="ProfileRegister" component={ProfileRegister} />
-            <Stack.Screen name="ProfilePage" component={ProfilePage} />
-            <Stack.Screen name="SettingsPage" component={SettingsPage} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <AppNavigator />
       </AuthProvider>
     </LanguageProvider>
   );

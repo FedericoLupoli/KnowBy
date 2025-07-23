@@ -88,7 +88,7 @@ export default function ProfileLogin() {
         } else if (data.errors) {
           alert(data.errors.map(e => e.msg).join(', '));
         } else {
-          alert('Login fallito');
+          alert(translations[language].profileLogin.loginFailed);
         }
         return;
       }
@@ -102,7 +102,7 @@ export default function ProfileLogin() {
       // Naviga alla pagina profilo
       navigation.replace('ProfilePage');
     } catch (error) {
-      alert('Errore di rete: ' + error.message);
+      alert(translations[language].profileLogin.networkError + error.message);
     }
   };
 
@@ -118,10 +118,10 @@ export default function ProfileLogin() {
 
         {/* Body principale: form di login */}
         <View style={loginStyle.container}>
-          <Text style={[loginStyle.title, {marginTop: -150}]}>{translations[language].loginTitle}</Text>
+          <Text style={[loginStyle.title, {marginTop: -150}]}>{translations[language].profileLogin.title}</Text>
           <TextInput
             style={loginStyle.input}
-            placeholder={translations[language].email}
+            placeholder={translations[language].profileLogin.email}
             value={email}
             onChangeText={setEmail}
             autoCorrect={false}
@@ -130,7 +130,7 @@ export default function ProfileLogin() {
           />
           <TextInput
             style={loginStyle.input}
-            placeholder={translations[language].password}
+            placeholder={translations[language].profileLogin.password}
             value={password}
             onChangeText={setPassword}
             autoCorrect={false}
@@ -138,12 +138,12 @@ export default function ProfileLogin() {
           />
           <Button
             style={loginStyle.button}
-            title={translations[language].login}
+            title={translations[language].profileLogin.login}
             onPress={handleLogin}
           />
           <Button 
             style={loginStyle.button}
-            title={translations[language].noAccReg}
+            title={translations[language].profileLogin.noAccountRegister}
             onPress={handleRegisterPage}
           />
         </View>

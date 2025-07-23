@@ -1,7 +1,7 @@
 # KnowByAPI - Documentazione API
 
 ## Informazioni generali
-- **Base URL**: `http://localhost:3000/api` (sviluppo) / `https://your-domain.com/api` (produzione)
+- **Base URL**: `http://localhost:3000/api` (sviluppo) / `http://66.118.245.111/api` (produzione)
 - **Versione**: 1.0.0
 - **Formato**: JSON
 - **Autenticazione**: JWT Bearer Token

@@ -12,4 +12,14 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
-export const useLanguage = () => useContext(LanguageContext); 
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    // Se il context non è disponibile, restituisce valori di default
+    return {
+      language: 'it',
+      toggleLanguage: () => {}
+    };
+  }
+  return context;
+}; 
