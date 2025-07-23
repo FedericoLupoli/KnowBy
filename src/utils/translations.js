@@ -70,6 +70,7 @@ const translations = {
     // === PROFILE PAGE SCREEN ===
     profilePage: {
       title: 'Il tuo profilo',
+      loading: 'Caricamento profilo...',
       name: 'Nome',
       email: 'Email',
       subject: 'Materia',
@@ -192,6 +193,7 @@ const translations = {
     // === PROFILE PAGE SCREEN ===
     profilePage: {
       title: 'Your profile',
+      loading: 'Loading profile...',
       name: 'Name',
       email: 'Email',
       subject: 'Subject',

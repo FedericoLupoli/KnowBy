@@ -39,9 +39,21 @@ export function AuthProvider({ children }) {
 
           if (res.ok) {
             const data = await res.json();
-            setUser(data.user || data);
-            setIsLoggedIn(true);
-            setAuthError(null);
+            const userData = data.user || data;
+            
+            // Verifica che i dati utente siano completi
+            if (userData && userData.id && userData.email) {
+              setUser(userData);
+              setIsLoggedIn(true);
+              setAuthError(null);
+            } else {
+              // Dati utente incompleti, rimuovi token
+              console.log('Dati utente incompleti:', userData);
+              await AsyncStorage.removeItem('jwtToken');
+              setUser(null);
+              setIsLoggedIn(false);
+              setAuthError('INCOMPLETE_USER_DATA');
+            }
           } else {
             // Token non valido o scaduto
             console.log('Token non valido, status:', res.status);

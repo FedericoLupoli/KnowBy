@@ -13,28 +13,76 @@ import { useNavigation } from '@react-navigation/native';
 export default function ProfilePage() {
   // Stato lingua globale
   const { language } = useLanguage();
-  const { user, setUser } = useAuth();
+  const { user, setUser, isLoading: authLoading } = useAuth();
   const navigation = useNavigation();
   // Stato per tracciare quale icona è attiva nel footer
   const [activeIcon, setActiveIcon] = useState('user');
-  const [name, setName] = useState(user?.name || '');
-  const [email, setEmail] = useState(user?.email || '');
-  const [bio, setBio] = useState(user?.bio || '');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [subject, setSubject] = useState(user?.subject || '');
-  const [hourlyRate, setHourlyRate] = useState(user?.hourlyRate ? String(user.hourlyRate) : '');
+  const [subject, setSubject] = useState('');
+  const [hourlyRate, setHourlyRate] = useState('');
+  const [dataInitialized, setDataInitialized] = useState(false);
 
-  // Redirect automatico se non autenticato
+  // Inizializza i dati quando l'utente è disponibile
   React.useEffect(() => {
-    if (!user) {
+    if (user && !dataInitialized) {
+      setName(user.name || '');
+      setEmail(user.email || '');
+      setBio(user.bio || '');
+      setSubject(user.subject || '');
+      setHourlyRate(user.hourlyRate ? String(user.hourlyRate) : '');
+      setDataInitialized(true);
+    }
+  }, [user, dataInitialized]);
+
+  // Refresh dei dati utente se incompleti
+  React.useEffect(() => {
+    const refreshUserData = async () => {
+      if (user && (!user.name || !user.email)) {
+        try {
+          const token = await AsyncStorage.getItem('jwtToken');
+          if (token) {
+            const res = await fetch(`http://66.118.245.111:3000/api/me`, {
+              headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+              const data = await res.json();
+              const userData = data.user || data;
+              if (userData && userData.id && userData.email) {
+                setUser(userData);
+              }
+            }
+          }
+        } catch (error) {
+          console.log('Errore refresh dati utente:', error);
+        }
+      }
+    };
+
+    refreshUserData();
+  }, [user, setUser]);
+
+  // Redirect automatico se non autenticato e non in caricamento
+  React.useEffect(() => {
+    if (!authLoading && !user) {
       navigation.replace('ProfileLogin');
     }
-  }, [user, navigation]);
+  }, [user, authLoading, navigation]);
 
-  if (!user) {
-    // Evita di mostrare la pagina se sta per reindirizzare
-    return null;
+  // Mostra loader durante l'autenticazione o se i dati non sono ancora inizializzati
+  if (authLoading || !user || !dataInitialized) {
+    return (
+      <MobileOnlyView>
+        <View style={[defaultStyle.container, { justifyContent: 'center', alignItems: 'center' }]}>
+          <Text style={{ color: '#00bfff', fontSize: 18 }}>
+            {translations[language]?.profilePage?.loading || 'Caricamento...'}
+          </Text>
+        </View>
+      </MobileOnlyView>
+    );
   }
 
   const handleSave = async () => {

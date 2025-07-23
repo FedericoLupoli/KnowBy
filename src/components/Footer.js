@@ -15,13 +15,20 @@ const Footer = ({ activeIcon, setActiveIcon }) => {
   // Colori per icone attive/inattive
   const activeColor = '#00bfff';
   const inactiveColor = '#efeff2';
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user, isLoading } = useAuth();
   const navigation = useNavigation();
 
   // Navigazione e attivazione icone
   const handleUserPress = () => {
     setActiveIcon('user');
-    if (isLoggedIn) {
+    
+    // Evita navigazione se ancora in caricamento
+    if (isLoading) {
+      return;
+    }
+    
+    // Naviga solo se l'utente è completamente autenticato con dati
+    if (isLoggedIn && user) {
       navigation.navigate('ProfilePage');
     } else {
       navigation.navigate('ProfileLogin');
