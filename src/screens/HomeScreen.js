@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, FlatList } from 'react-native';
+import { View, ActivityIndicator, FlatList } from 'react-native';
 import defaultStyle from '../styles/defaultStyle';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
