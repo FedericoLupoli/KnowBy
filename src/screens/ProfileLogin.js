@@ -8,6 +8,7 @@ import { useLanguage } from '../context/LanguageContext';
 import translations from '../utils/translations';
 import { useAuth } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
+import { buildApiUrl, API_ENDPOINTS } from '../config/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Stili per la pagina di login
@@ -67,10 +68,10 @@ export default function ProfileLogin() {
   // Hook di navigazione
   const navigation = useNavigation();
 
-  // Funzione di login (debug: admin/admin)
+  // Funzione di login
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://66.118.245.111:3000/api/login', {
+      const response = await fetch(buildApiUrl(API_ENDPOINTS.LOGIN), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

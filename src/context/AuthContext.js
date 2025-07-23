@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { buildApiUrl, API_ENDPOINTS } from '../config/api';
 
 const AuthContext = createContext();
 
@@ -30,7 +31,7 @@ export function AuthProvider({ children }) {
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 secondi timeout
 
-          const res = await fetch('http://66.118.245.111:3000/api/me', {
+          const res = await fetch(buildApiUrl(API_ENDPOINTS.ME), {
             headers: { 'Authorization': `Bearer ${token}` },
             signal: controller.signal
           });

@@ -157,12 +157,16 @@ npm install
 # oppure con yarn
 yarn install
 
-# 3. Avvia l'ambiente di sviluppo
+# 3. Configura le variabili d'ambiente
+cp .env.example .env
+# Modifica il file .env con le tue configurazioni
+
+# 4. Avvia l'ambiente di sviluppo
 npm start
 # oppure
 expo start
 
-# 4. Scansiona il QR code con Expo Go
+# 5. Scansiona il QR code con Expo Go
 # per testare su dispositivo fisico
 ```
 

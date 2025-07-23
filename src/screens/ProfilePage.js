@@ -9,6 +9,7 @@ import translations from '../utils/translations';
 import { useAuth } from '../context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import { buildApiUrl, API_ENDPOINTS } from '../config/api';
 
 export default function ProfilePage() {
   // Stato lingua globale
@@ -45,7 +46,7 @@ export default function ProfilePage() {
         try {
           const token = await AsyncStorage.getItem('jwtToken');
           if (token) {
-            const res = await fetch(`http://66.118.245.111:3000/api/me`, {
+            const res = await fetch(buildApiUrl(API_ENDPOINTS.ME), {
               headers: { 'Authorization': `Bearer ${token}` }
             });
             if (res.ok) {
@@ -90,7 +91,7 @@ export default function ProfilePage() {
     try {
       const token = await AsyncStorage.getItem('jwtToken');
       // 1. Modifica dati
-      const res = await fetch(`http://66.118.245.111:3000/api/users/${user.id}`, {
+      const res = await fetch(`${buildApiUrl(API_ENDPOINTS.USERS)}/${user.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -123,7 +124,7 @@ export default function ProfilePage() {
         }
       } else {
         // 2. Recupera i dati aggiornati (autenticato)
-        const resUser = await fetch(`http://66.118.245.111:3000/api/users/${user.id}`, {
+        const resUser = await fetch(`${buildApiUrl(API_ENDPOINTS.USERS)}/${user.id}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (resUser.ok) {

@@ -7,6 +7,7 @@ import MobileOnlyView from '../components/MobileOnlyView';
 import TutorCard from '../components/TutorCard';
 import { useLanguage } from '../context/LanguageContext';
 import translations from '../utils/translations';
+import { getApiUrl, API_ENDPOINTS } from '../config/api';
 
 export default function SearchScreen() {
   const { language } = useLanguage();
@@ -24,7 +25,7 @@ export default function SearchScreen() {
     setError('');
     setResults([]);
     try {
-      let url = 'http://66.118.245.111:3000/api/tutors?';
+      let url = `${getApiUrl()}/${API_ENDPOINTS.TUTORS}?`;
       const params = [];
       if (name) params.push(`name=${encodeURIComponent(name)}`);
       if (subject) params.push(`subject=${encodeURIComponent(subject)}`);

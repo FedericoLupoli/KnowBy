@@ -9,6 +9,7 @@ import translations from '../utils/translations';
 import { useAuth } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { buildApiUrl, API_ENDPOINTS } from '../config/api';
 
 // Stili per la pagina di login
 const loginStyle = {
@@ -74,7 +75,7 @@ export default function ProfileRegister() {
     }
     setLoading(true);
     try {
-      const res = await fetch('http://66.118.245.111:3000/api/register', {
+      const res = await fetch(buildApiUrl(API_ENDPOINTS.REGISTER), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, role, bio: role === 'tutor' ? bio : undefined, subject: role === 'tutor' ? subject : undefined }),

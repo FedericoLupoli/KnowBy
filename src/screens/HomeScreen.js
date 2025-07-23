@@ -8,6 +8,7 @@ import TutorCard from '../components/TutorCard';
 import AuthErrorBanner from '../components/AuthErrorBanner';
 import { useLanguage } from '../context/LanguageContext';
 import translations from '../utils/translations';
+import { buildApiUrl, API_ENDPOINTS } from '../config/api';
 
 
 export default function HomeScreen() {
@@ -22,7 +23,7 @@ export default function HomeScreen() {
    useEffect(() => {
     const fetchTutors = async () => {
       try {
-        const response = await fetch('http://66.118.245.111:3000/api/tutors');
+        const response = await fetch(buildApiUrl(API_ENDPOINTS.TUTORS));
         const data = await response.json();
         if (!response.ok) {
           if (data.error) throw new Error(data.error);
