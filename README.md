@@ -3,7 +3,6 @@
 ![Expo](https://img.shields.io/badge/Expo-React%20Native-blueviolet?logo=expo)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-green)
 ![License](https://img.shields.io/badge/LICENCE-MIT-orange)
-)
 
 🔗 Integrazione Backend
 
