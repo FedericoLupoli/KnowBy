@@ -294,7 +294,7 @@ copies or substantial portions of the Software.
 
 <img src="https://skillicons.dev/icons?i=js,react"/> 
 <br>
-**Sviluppo Frontend di** [Federico Lupoli](https://github.com/FedericoLupoli)
+<p><stong>Sviluppo di <a href='https://github.com/FedericoLupoli'>Federico Lupoli</a></strong></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-FedericoLupoli-black?style=for-the-badge&logo=github)](https://github.com/FedericoLupoli)
 [![Repository](https://img.shields.io/badge/Repository-KnowByDEV-blue?style=for-the-badge&logo=git)](https://github.com/FedericoLupoli/KnowByDEV)
