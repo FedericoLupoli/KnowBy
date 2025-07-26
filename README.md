@@ -303,7 +303,7 @@ copies or substantial portions of the Software.
 
 <img src="https://skillicons.dev/icons?i=windows,mysql"/> 
 <br>
-<p><stong>Sviluppo di <a href='https://github.com/NicholasBertuzzi'>Nicholas Bertuzzi</a></strong></p>
+<p><stong>Infrastruttra di <a href='https://github.com/NicholasBertuzzi'>Nicholas Bertuzzi</a></strong></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-NicholasBertuzzi-black?style=for-the-badge&logo=github)](https://github.com/NicholasBertuzzi)
 
@@ -311,7 +311,7 @@ copies or substantial portions of the Software.
 
 <img src="https://skillicons.dev/icons?i=figma,photoshop"/> 
 <br>
-<p><stong>Sviluppo di <a href='https://github.com/AndreaMiccoli'>Andrea Miccoli</a></strong></p>
+<p><stong>UI/UX di <a href='https://github.com/AndreaMiccoli'>Andrea Miccoli</a></strong></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-AndreaMiccoli-black?style=for-the-badge&logo=github)](https://github.com/AndreaMiccoli)
 
@@ -319,7 +319,7 @@ copies or substantial portions of the Software.
 
 ### 🙏 Ringraziamenti
 
-Grazie a tutti i contributori e alla community React Native per il supporto continuo.
+Grazie a tutti i contributori e alla community React Native ed Expo per il supporto continuo.
 
 **⭐ Se questo progetto ti è stato utile, considera di dargli una stella!**
 
