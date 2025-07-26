@@ -294,7 +294,7 @@ copies or substantial portions of the Software.
 
 <img src="https://skillicons.dev/icons?i=js,react"/> 
 <br>
-**Sviluppo di [Federico Lupoli](https://github.com/FedericoLupoli)**
+**Sviluppo Frontend di** [Federico Lupoli](https://github.com/FedericoLupoli)
 
 [![GitHub](https://img.shields.io/badge/GitHub-FedericoLupoli-black?style=for-the-badge&logo=github)](https://github.com/FedericoLupoli)
 [![Repository](https://img.shields.io/badge/Repository-KnowByDEV-blue?style=for-the-badge&logo=git)](https://github.com/FedericoLupoli/KnowByDEV)
@@ -302,14 +302,14 @@ copies or substantial portions of the Software.
 <br>
 
 <img src="https://skillicons.dev/icons?i=windows,mysql"/> 
-**Infrastruttura Backend di [Nicholas Bertuzzi](https://github.com/NicholasBertuzzi)**
+**Infrastruttura Backend di** [Nicholas Bertuzzi](https://github.com/NicholasBertuzzi)
 
 [![GitHub](https://img.shields.io/badge/GitHub-NicholasBertuzzi-black?style=for-the-badge&logo=github)](https://github.com/NicholasBertuzzi)
 
 <br>
 
 <img src="https://skillicons.dev/icons?i=figma,photoshop"/> 
-**UI/UX Design di [Andrea Miccoli](https://github.com/AndreaMiccoli)**
+**UI/UX Design di** [Andrea Miccoli](https://github.com/AndreaMiccoli)
 
 [![GitHub](https://img.shields.io/badge/GitHub-AndreaMiccoli-black?style=for-the-badge&logo=github)](https://github.com/AndreaMiccoli)
 
