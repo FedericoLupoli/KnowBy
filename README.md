@@ -293,7 +293,8 @@ copies or substantial portions of the Software.
 <div align="center">
 
 <img src="https://skillicons.dev/icons?i=devto"/> 
-**Codice di [Federico Lupoli](https://github.com/FedericoLupoli)**
+<br>
+Codice di [Federico Lupoli](https://github.com/FedericoLupoli)
 
 [![GitHub](https://img.shields.io/badge/GitHub-FedericoLupoli-black?style=for-the-badge&logo=github)](https://github.com/FedericoLupoli)
 [![Repository](https://img.shields.io/badge/Repository-KnowByDEV-blue?style=for-the-badge&logo=git)](https://github.com/FedericoLupoli/KnowByDEV)
