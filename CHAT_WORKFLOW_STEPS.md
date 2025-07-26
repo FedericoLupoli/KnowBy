@@ -9,7 +9,7 @@
 
 ## 📋 FASI DI IMPLEMENTAZIONE
 
-### 🔧 FASE 1: PREPARAZIONE BACKEND (Giorno 1 - Mattina)
+### FATTO 🔧 FASE 1: PREPARAZIONE BACKEND (Giorno 1 - Mattina)
 
 #### 1.1 Database Schema
 
@@ -23,17 +23,10 @@ CREATE TABLE conversations (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     last_message_id INT DEFAULT NULL,
-    
-    -- Indici per performance
     INDEX idx_user1 (user1_id),
     INDEX idx_user2 (user2_id),
     INDEX idx_users_pair (user1_id, user2_id),
     INDEX idx_updated_at (updated_at),
-    
-    -- Constraint per evitare conversazioni duplicate
-    UNIQUE KEY unique_conversation (LEAST(user1_id, user2_id), GREATEST(user1_id, user2_id)),
-    
-    -- Foreign Keys
     FOREIGN KEY (user1_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (user2_id) REFERENCES users(id) ON DELETE CASCADE
 );
@@ -49,7 +42,6 @@ ADD COLUMN read_at TIMESTAMP NULL DEFAULT NULL AFTER sent_at,
 ADD COLUMN edited_at TIMESTAMP NULL DEFAULT NULL AFTER read_at,
 ADD COLUMN reply_to_message_id INT NULL DEFAULT NULL AFTER edited_at;
 
--- Aggiungi indici per performance
 ALTER TABLE messages
 ADD INDEX idx_conversation (conversation_id),
 ADD INDEX idx_sender (sender_id),
@@ -57,7 +49,6 @@ ADD INDEX idx_receiver (receiver_id),
 ADD INDEX idx_read_status (read_at),
 ADD INDEX idx_sent_at (sent_at);
 
--- Aggiungi foreign keys
 ALTER TABLE messages
 ADD FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE,
 ADD FOREIGN KEY (reply_to_message_id) REFERENCES messages(id) ON DELETE SET NULL;
@@ -71,17 +62,11 @@ CREATE TABLE user_typing (
     user_id INT NOT NULL,
     conversation_id INT NOT NULL,
     started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
-    -- Indici
     INDEX idx_conversation_typing (conversation_id),
     INDEX idx_user_typing (user_id),
     INDEX idx_started_at (started_at),
-    
-    -- Foreign Keys
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE,
-    
-    -- Un utente può "scrivere" solo in una conversazione alla volta
     UNIQUE KEY unique_user_typing (user_id, conversation_id)
 );
 ```
@@ -97,14 +82,11 @@ CREATE PROCEDURE GetOrCreateConversation(
 )
 BEGIN
     DECLARE conv_id INT DEFAULT NULL;
-    
-    -- Cerca conversazione esistente
     SELECT id INTO conv_id 
     FROM conversations 
     WHERE (user1_id = LEAST(p_user1_id, p_user2_id) AND user2_id = GREATEST(p_user1_id, p_user2_id))
     LIMIT 1;
     
-    -- Se non esiste, creala
     IF conv_id IS NULL THEN
         INSERT INTO conversations (user1_id, user2_id) 
         VALUES (LEAST(p_user1_id, p_user2_id), GREATEST(p_user1_id, p_user2_id));
@@ -115,7 +97,7 @@ BEGIN
 END //
 DELIMITER ;
 
--- Procedure per contare messaggi non letti
+
 DELIMITER //
 CREATE PROCEDURE GetUnreadMessagesCount(
     IN p_user_id INT,
@@ -131,7 +113,6 @@ BEGIN
 END //
 DELIMITER ;
 
--- Procedure per pulizia user_typing scaduti (da eseguire periodicamente)
 DELIMITER //
 CREATE PROCEDURE CleanupExpiredTyping()
 BEGIN
@@ -160,7 +141,7 @@ DELIMITER ;
 
 ---
 
-### 🌐 FASE 2: IMPLEMENTAZIONE API BACKEND (Giorno 1 - Pomeriggio)
+### FATTO 🌐 FASE 2: IMPLEMENTAZIONE API BACKEND (Giorno 1 - Pomeriggio)
 
 #### 2.1 Endpoint Conversazioni
 

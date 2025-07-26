@@ -5,12 +5,30 @@
 ![Expo](https://img.shields.io/badge/Expo-v53.0.20-000020?style=for-the-badge&logo=expo&logoColor=white)
 ![React Native](https://img.shields.io/badge/React%20Native-v0.79.5-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-0.1.6-brightgreen?style=for-the-badge)
+![License](https://img.shields.io/badge/Licens<div align="center">
+<sub>Costruito con ❤️ usando React Native ed Expo</sub>
+</div>tyle=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.1.7-brightgreen?style=for-the-badge)
 
 **Una piattaforma mobile moderna per connettere studenti e tutor**
 
-[📖 Documentazione](#-documentazione) • [🚀 Quick Start](#-quick-start) • [🛠️ Sviluppo](#️-sviluppo) • [🤝 Contributi](#-contributi)
+[📖 Documentazione](#-documentazione) • [🚀 Quick Start](#-quick-start) • [🛠️ Sviluppo](#️-sviluppo) • [🤝 Contributi](#-contributi) • [📞 Supporto](#-supporto-e-contatti)
+
+</div>
+
+---
+
+## 📋 Indice
+
+- [📋 Panoramica](#-panoramica)
+- [✨ Funzionalità Principali](#-funzionalità-principali)
+- [🏗️ Architettura del Progetto](#️-architettura-del-progetto)
+- [🚀 Quick Start](#-quick-start)
+- [🛠️ Sviluppo](#️-sviluppo)
+- [📖 Documentazione](#-documentazione)
+- [🤝 Contributi](#-contributi)
+- [📄 Licenza](#-licenza)
+- [📞 Supporto e Contatti](#-supporto-e-contatti)
 
 </div>
 
@@ -20,7 +38,14 @@
 
 **KnowBy V2** è un'applicazione mobile cross-platform sviluppata in React Native ed Expo, progettata per rivoluzionare il modo in cui studenti e tutor si connettono. L'app offre un'interfaccia utente moderna e intuitiva con tema scuro, animazioni fluide e un design responsive ottimizzato per dispositivi mobili.
 
-### 🎯 Obiettivi del Progetto
+### � Status del Progetto
+
+![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square)
+![Code Quality](https://img.shields.io/badge/Code%20Quality-A-brightgreen?style=flat-square)
+![Maintenance](https://img.shields.io/badge/Maintenance-Active-brightgreen?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/FedericoLupoli/KnowByDEV?style=flat-square)
+
+### �🎯 Obiettivi del Progetto
 
 - Facilitare la ricerca e il matching tra studenti e tutor qualificati
 - Fornire una piattaforma sicura per l'apprendimento online
@@ -29,7 +54,7 @@
 
 ---
 
-## ✨ Caratteristiche Principali
+## ✨ Funzionalità Principali
 
 ### 🎨 Design & UI/UX
 - **Interface moderna** con tema scuro e accenti verdi
@@ -54,27 +79,15 @@
 
 ---
 
----
-
-## ✨ Funzionalità principali
-
-- **Header**: Gradient moderno, titolo dell’app.
-- **Body**: Area centrale per i contenuti (es. elenco tutor, profili, ecc.).
-- **Footer volante**: Pulsanti-icona (Home, Search, User, Settings) ancorati in basso, con effetto floating e selezione attiva.
-- **Responsive**: UI ottimizzata per smartphone.
-- **Blocco tablet/web**: L’app mostra un messaggio di blocco se aperta su tablet, iPad o web.
-- **Integrazione API**: Visualizza tutor disponibili tramite backend KnowByAPI.
-
----
-
 ## 📱 Screenshot
 
 <!-- Inserisci qui uno screenshot dell'app, ad esempio: -->
 <!-- ![Schermata KnowByV2](assets/images/splash-icon.png) -->
 
----
+## 📱 Screenshot
 
-## 📦 Struttura delle cartelle
+<!-- Inserisci qui uno screenshot dell'app, ad esempio: -->
+<!-- ![Schermata KnowByV2](assets/images/splash-icon.png) -->
 
 ## 🏗️ Architettura del Progetto
 
@@ -140,10 +153,12 @@ KnowByV2/
 
 Prima di iniziare, assicurati di avere installato:
 
-- **Node.js** (v18.0.0 o superiore)
+- **Node.js** (v18.0.0 o superiore) - [Download](https://nodejs.org/)
 - **npm** o **yarn** come package manager
 - **Expo CLI** (`npm install -g @expo/cli`)
-- **Expo Go** app sul tuo dispositivo mobile
+- **Expo Go** app sul tuo dispositivo mobile ([iOS](https://apps.apple.com/app/expo-go/id982107779) | [Android](https://play.google.com/store/apps/details?id=host.exp.exponent))
+
+> ⚠️ **Nota**: Assicurati di aver configurato correttamente l'ambiente di sviluppo React Native seguendo la [guida ufficiale](https://reactnative.dev/docs/environment-setup).
 
 ### ⚡ Installazione Rapida
 
@@ -159,7 +174,10 @@ yarn install
 
 # 3. Configura le variabili d'ambiente
 cp .env.example .env
-# Modifica il file .env con le tue configurazioni
+# Modifica il file .env con le tue configurazioni:
+# - EXPO_PUBLIC_API_URL: URL del tuo server API
+# - EXPO_PUBLIC_PROJECT_ID: ID progetto Expo
+# - EXPO_PUBLIC_DEBUG_MODE: true/false per modalità debug
 
 # 4. Avvia l'ambiente di sviluppo
 npm start
@@ -174,11 +192,91 @@ expo start
 
 | Comando | Descrizione |
 |---------|-------------|
-| `npm start` | Avvia il server di sviluppo con LAN |
+| `npm start` | Avvia il server di sviluppo con connessione LAN |
 | `npm run android` | Avvia su emulatore Android |
 | `npm run ios` | Avvia su simulatore iOS |
-| `npm run web` | Avvia versione web (limitata) |
-| `npm run lint` | Esegue controllo qualità codice |
+| `npm run web` | Avvia versione web (funzionalità limitate) |
+| `npm run lint` | Esegue controllo qualità codice con ESLint |
+
+---
+
+## 🛠️ Sviluppo
+
+### 🔧 Tecnologie Utilizzate
+
+- **Frontend**: React Native 0.79.5, Expo SDK 53
+- **Navigazione**: React Navigation v7
+- **Stato**: Context API (AuthContext, LanguageContext)
+- **Styling**: StyleSheet nativo con tema scuro
+- **Icone**: Expo Vector Icons
+- **Gradients**: Expo Linear Gradient
+- **Storage**: Async Storage per persistenza locale
+
+### 📋 Requisiti di Sistema
+
+- **Node.js**: v18.0.0 o superiore
+- **npm/yarn**: Per gestione dipendenze
+- **Expo CLI**: Per sviluppo e build
+- **Git**: Per version control
+- **Dispositivo mobile** o emulatore per testing
+
+### 🔗 Integrazione API
+
+L'app si collega al backend [KnowByAPI](https://github.com/FedericoLupoli/KnowByAPI) per:
+
+- **Autenticazione**: Login/register utenti
+- **Gestione tutor**: Elenco e dettagli tutor
+- **Ricerca**: Filtri e ricerca avanzata
+- **Profili**: Gestione dati utente
+
+#### Configurazione API
+
+Modifica il file `.env` con i seguenti parametri:
+
+```env
+EXPO_PUBLIC_API_URL=http://your-api-server.com:3000
+EXPO_PUBLIC_PROJECT_ID=your-expo-project-id
+EXPO_PUBLIC_DEBUG_MODE=false
+```
+
+### 🔄 Flusso di Sviluppo
+
+1. **Sviluppo locale**: `npm start` per ambiente di sviluppo
+2. **Testing**: Test su dispositivi fisici tramite Expo Go
+3. **Linting**: `npm run lint` per controllo qualità codice
+4. **Build**: EAS Build per build produzione
+5. **Deploy**: EAS Submit per pubblicazione store
+
+---
+
+## 📖 Documentazione
+
+Per informazioni più dettagliate, consulta la documentazione tecnica:
+
+- **[DOCS.md](DOCS.md)**: Documentazione tecnica completa
+- **[ACCOUNT_SYSTEM.md](ACCOUNT_SYSTEM.md)**: Sistema di autenticazione
+- **[CHAT_WORKFLOW_STEPS.md](CHAT_WORKFLOW_STEPS.md)**: Workflow della chat
+- **[SECURITY.md](SECURITY.md)**: Linee guida di sicurezza
+
+### 🔧 Risoluzione Problemi
+
+**Problema comune**: L'app non si avvia
+- Verifica che Node.js sia v18+ 
+- Controlla le variabili d'ambiente in `.env`
+- Prova a pulire la cache: `npx expo start --clear`
+
+**Problema comune**: Errori di build
+- Verifica che tutte le dipendenze siano installate
+- Controlla la compatibilità versioni in `package.json`
+- Consulta i log dettagliati con `expo diagnostics`
+
+---
+
+## 🚨 Limitazioni Note
+
+- **Piattaforme supportate**: Solo iOS e Android (no web/tablet)
+- **Connessione richiesta**: L'app richiede connessione internet per API
+- **Versione minima**: iOS 11.0+, Android API 21+
 
 ---
 
@@ -243,7 +341,18 @@ Accettiamo con piacere contributi dalla community! Che tu sia uno sviluppatore e
    ```
 5. **Apri una Pull Request** con descrizione dettagliata
 
-### 📝 Convenzioni Commit
+### �️ Roadmap
+
+Le prossime funzionalità in sviluppo:
+
+- [ ] **Chat in tempo reale** tra studenti e tutor
+- [ ] **Sistema di recensioni** e rating
+- [ ] **Calendario integrato** per prenotazioni
+- [ ] **Pagamenti in-app** per lezioni
+- [ ] **Notifiche push** personalizzate
+- [ ] **Modalità offline** limitata
+
+### �📝 Convenzioni Commit
 
 Utilizziamo [Conventional Commits](https://www.conventionalcommits.org/):
 
@@ -294,7 +403,7 @@ copies or substantial portions of the Software.
 
 <img src="https://skillicons.dev/icons?i=js,react"/> 
 <br>
-<p><stong>Sviluppo di <a href='https://github.com/FedericoLupoli'>Federico Lupoli</a></strong></p>
+<p><strong>Sviluppo di <a href='https://github.com/FedericoLupoli'>Federico Lupoli</a></strong></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-FedericoLupoli-black?style=for-the-badge&logo=github)](https://github.com/FedericoLupoli)
 [![Repository](https://img.shields.io/badge/Repository-KnowByDEV-blue?style=for-the-badge&logo=git)](https://github.com/FedericoLupoli/KnowByDEV)
@@ -303,7 +412,7 @@ copies or substantial portions of the Software.
 
 <img src="https://skillicons.dev/icons?i=windows,mysql"/> 
 <br>
-<p><stong>Infrastruttra di <a href='https://github.com/NicholasBertuzzi'>Nicholas Bertuzzi</a></strong></p>
+<p><strong>Infrastruttura di <a href='https://github.com/NicholasBertuzzi'>Nicholas Bertuzzi</a></strong></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-NicholasBertuzzi-black?style=for-the-badge&logo=github)](https://github.com/NicholasBertuzzi)
 
@@ -311,7 +420,7 @@ copies or substantial portions of the Software.
 
 <img src="https://skillicons.dev/icons?i=figma,photoshop"/> 
 <br>
-<p><stong>UI/UX di <a href='https://github.com/AndreaMiccoli'>Andrea Miccoli</a></strong></p>
+<p><strong>UI/UX di <a href='https://github.com/AndreaMiccoli'>Andrea Miccoli</a></strong></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-AndreaMiccoli-black?style=for-the-badge&logo=github)](https://github.com/AndreaMiccoli)
 

@@ -20,7 +20,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "d4995d21-270c-4c25-a4d3-71a221c41660"
+        "projectId": "${EXPO_PUBLIC_PROJECT_ID}"
       }
     },
     "owner": "federicolupoli",
