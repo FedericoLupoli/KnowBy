@@ -292,7 +292,7 @@ copies or substantial portions of the Software.
 
 <div align="center">
 
-**👨‍� Sviluppato da [Federico Lupoli](https://github.com/FedericoLupoli)**
+**<img src="https://skillicons.dev/icons?i=devto"/> Sviluppato da [Federico Lupoli](https://github.com/FedericoLupoli)**
 
 [![GitHub](https://img.shields.io/badge/GitHub-FedericoLupoli-black?style=for-the-badge&logo=github)](https://github.com/FedericoLupoli)
 [![Repository](https://img.shields.io/badge/Repository-KnowByDEV-blue?style=for-the-badge&logo=git)](https://github.com/FedericoLupoli/KnowByDEV)
