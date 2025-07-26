@@ -5,9 +5,7 @@
 ![Expo](https://img.shields.io/badge/Expo-v53.0.20-000020?style=for-the-badge&logo=expo&logoColor=white)
 ![React Native](https://img.shields.io/badge/React%20Native-v0.79.5-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![License](https://img.shields.io/badge/Licens<div align="center">
-<sub>Costruito con ❤️ usando React Native ed Expo</sub>
-</div>tyle=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 ![Version](https://img.shields.io/badge/Version-0.1.7-brightgreen?style=for-the-badge)
 
 **Una piattaforma mobile moderna per connettere studenti e tutor**
@@ -29,8 +27,6 @@
 - [🤝 Contributi](#-contributi)
 - [📄 Licenza](#-licenza)
 - [📞 Supporto e Contatti](#-supporto-e-contatti)
-
-</div>
 
 ---
 
@@ -84,10 +80,7 @@
 <!-- Inserisci qui uno screenshot dell'app, ad esempio: -->
 <!-- ![Schermata KnowByV2](assets/images/splash-icon.png) -->
 
-## 📱 Screenshot
-
-<!-- Inserisci qui uno screenshot dell'app, ad esempio: -->
-<!-- ![Schermata KnowByV2](assets/images/splash-icon.png) -->
+---
 
 ## 🏗️ Architettura del Progetto
 
@@ -280,46 +273,6 @@ Per informazioni più dettagliate, consulta la documentazione tecnica:
 
 ---
 
----
-
-## 🚀 Avvio rapido
-
-1. **Clona il repository:**
-   ```sh
-   git clone https://github.com/tuo-utente/KnowByV2.git
-   cd KnowByV2
-   ```
-2. **Installa le dipendenze:**
-   ```sh
-   npm install
-   # oppure
-   yarn install
-   ```
-3. **Avvia l’app su dispositivo mobile:**
-   ```sh
-   npm start
-   # oppure
-   expo start
-   ```
-   Scansiona il QR code con l’app Expo Go su Android/iOS.
-
----
-
-## 🔗 Integrazione API
-
-L’app si collega al backend [KnowByAPI](https://github.com/FedericoLupoli/KnowByAPI) per mostrare tutor, recensioni e messaggi. Consulta la documentazione API per dettagli su endpoint e parametri.
-
----
-
-## 🛠️ Dipendenze principali
-
-- **expo**
-- **react-native**
-- **expo-linear-gradient**
-- **@expo/vector-icons**
-
----
-
 ## 🤝 Contributi
 
 Accettiamo con piacere contributi dalla community! Che tu sia uno sviluppatore esperto o alle prime armi, il tuo aiuto è prezioso.
@@ -341,7 +294,7 @@ Accettiamo con piacere contributi dalla community! Che tu sia uno sviluppatore e
    ```
 5. **Apri una Pull Request** con descrizione dettagliata
 
-### �️ Roadmap
+### 🗺️ Roadmap
 
 Le prossime funzionalità in sviluppo:
 
@@ -352,7 +305,7 @@ Le prossime funzionalità in sviluppo:
 - [ ] **Notifiche push** personalizzate
 - [ ] **Modalità offline** limitata
 
-### �📝 Convenzioni Commit
+### 📝 Convenzioni Commit
 
 Utilizziamo [Conventional Commits](https://www.conventionalcommits.org/):
 
@@ -439,12 +392,3 @@ Grazie a tutti i contributori e alla community React Native ed Expo per il suppo
 <div align="center">
 <sub>Costruito con ❤️ usando React Native ed Expo</sub>
 </div>
-
-- L’app non è utilizzabile su web o tablet/iPad.
-- Per aggiungere nuove schermate, crea un nuovo file in `src/screens/` e aggiorna la navigazione.
-- Per aggiungere nuovi componenti riutilizzabili, usa `src/components/`.
-- Le icone e immagini sono in `assets/`.
-
----
-
-**KnowBy** © 2025 – Made with ❤️ by Federico Lupoli
