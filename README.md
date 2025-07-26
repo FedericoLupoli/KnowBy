@@ -302,14 +302,16 @@ copies or substantial portions of the Software.
 <br>
 
 <img src="https://skillicons.dev/icons?i=windows,mysql"/> 
-**Infrastruttura Backend di** [Nicholas Bertuzzi](https://github.com/NicholasBertuzzi)
+<br>
+<p><stong>Sviluppo di <a href='https://github.com/NicholasBertuzzi'>Nicholas Bertuzzi</a></strong></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-NicholasBertuzzi-black?style=for-the-badge&logo=github)](https://github.com/NicholasBertuzzi)
 
 <br>
 
 <img src="https://skillicons.dev/icons?i=figma,photoshop"/> 
-**UI/UX Design di** [Andrea Miccoli](https://github.com/AndreaMiccoli)
+<br>
+<p><stong>Sviluppo di <a href='https://github.com/AndreaMiccoli'>Andrea Miccoli</a></strong></p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-AndreaMiccoli-black?style=for-the-badge&logo=github)](https://github.com/AndreaMiccoli)
 
