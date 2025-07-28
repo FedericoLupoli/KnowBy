@@ -127,6 +127,75 @@ Autentica un utente esistente (studente, tutor o admin).
 
 ---
 
+### Profilo utente corrente
+**GET** `/me`
+
+Ottiene i dati dell'utente attualmente autenticato.
+
+#### Headers
+```
+Authorization: Bearer <jwt_token>
+```
+
+#### Esempio richiesta
+```
+GET /api/me
+```
+
+#### Risposta di successo (200) - Tutor
+```json
+{
+  "user": {
+    "id": 1,
+    "email": "mario.rossi@email.com",
+    "name": "Mario Rossi",
+    "role": "tutor",
+    "bio": "Esperto in matematica con 5 anni di esperienza",
+    "subject": "Matematica",
+    "hourlyRate": 25,
+    "rating": 4.5,
+    "location": "Milano",
+    "createdAt": "2024-01-10T10:30:00.000Z"
+  }
+}
+```
+
+#### Risposta di successo (200) - Studente
+```json
+{
+  "user": {
+    "id": 2,
+    "email": "giulia.bianchi@email.com",
+    "name": "Giulia Bianchi",
+    "role": "student",
+    "bio": "Studentessa universitaria",
+    "location": "Roma",
+    "createdAt": "2024-01-12T14:20:00.000Z"
+  }
+}
+```
+
+#### Risposta di errore (401)
+```json
+{
+  "error": "Token mancante o non valido"
+}
+```
+
+#### Risposta di errore (404)
+```json
+{
+  "error": "Utente non trovato"
+}
+```
+
+#### Note
+- Questo endpoint restituisce tutti i dati dell'utente autenticato
+- I campi restituiti variano in base al ruolo (tutor vs student)
+- Utile per popolare il profilo utente nell'app
+
+---
+
 ## Gestione Tutor
 
 ### Ricerca tutor
@@ -435,6 +504,12 @@ Tutti gli endpoint restituiscono errori nel seguente formato:
 - Tutte le date sono in formato ISO 8601
 - I placeholder attuali verranno sostituiti con logica reale in futuro
 - Per testare gli endpoint, usa Postman, Insomnia o curl 
+- **Differenza tra `/me` e `/users/{id}`**:
+  - `/me` restituisce i dati dell'utente autenticato (basato sul token JWT)
+  - `/users/{id}` restituisce i dati di un utente specifico tramite ID
+- La logica di modifica utente (PUT /users/:id) e di recupero dati utente (GET /users/:id) si trova nel file:
+  - `controllers/authController.js` (funzioni `updateUser` e `getUserById`)
+  - `routes/user.js` (definizione delle route)
 
 ---
 
@@ -460,9 +535,49 @@ Tutti gli endpoint restituiscono errori nel seguente formato:
 
 ## Gestione Utente
 
-La logica di modifica utente (PUT /users/:id) e di recupero dati utente (GET /users/:id) si trova nel file:
-- `controllers/authController.js` (funzioni `updateUser` e `getUserById`)
-- `routes/user.js` (definizione delle route)
+### Profilo utente specifico
+**GET** `/users/{id}`
+
+Ottiene i dati di un utente specifico (richiede autenticazione).
+
+#### Headers
+```
+Authorization: Bearer <jwt_token>
+```
+
+#### Parametri path
+- `id` (obbligatorio): ID dell'utente
+
+#### Esempio richiesta
+```
+GET /api/users/1
+```
+
+#### Risposta di successo (200)
+```json
+{
+  "user": {
+    "id": 1,
+    "email": "mario.rossi@email.com",
+    "name": "Mario Rossi",
+    "role": "tutor",
+    "bio": "Esperto in matematica con 5 anni di esperienza",
+    "subject": "Matematica",
+    "hourlyRate": 25,
+    "rating": 4.5,
+    "location": "Milano"
+  }
+}
+```
+
+#### Risposta di errore (404)
+```json
+{
+  "error": "Utente non trovato"
+}
+```
+
+---
 
 ### Modifica dati utente
 **PUT** `/users/{id}`

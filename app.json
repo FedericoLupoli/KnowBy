@@ -31,7 +31,11 @@
       }
     },
     "android": {
-      "package": "it.federicolupoli.knowby"
+      "package": "it.federicolupoli.knowby",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "backgroundColor": "#232b2b"
+      }
     },
     "runtimeVersion": {
       "policy": "appVersion"

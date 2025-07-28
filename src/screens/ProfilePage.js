@@ -30,7 +30,7 @@ export default function ProfilePage() {
 
   // Inizializza i dati quando l'utente è disponibile
   React.useEffect(() => {
-    if (user && !dataInitialized) {
+    if (user) {
       setName(user.name || '');
       setEmail(user.email || '');
       setBio(user.bio || '');
@@ -38,24 +38,34 @@ export default function ProfilePage() {
       setHourlyRate(user.hourlyRate ? String(user.hourlyRate) : '');
       setDataInitialized(true);
     }
-  }, [user, dataInitialized]);
+  }, [user]);
 
   // Refresh dei dati utente se incompleti
   React.useEffect(() => {
     const refreshUserData = async () => {
-      if (user && (!user.name || !user.email)) {
+      // Controlla solo i campi essenziali: id, email, name, role
+      if (user && (!user.name || !user.email || !user.id || !user.role)) {
         try {
           const token = await AsyncStorage.getItem('jwtToken');
           if (token) {
+            console.log('Tentativo refresh dati utente...');
             const res = await fetch(buildApiUrl(API_ENDPOINTS.ME), {
               headers: { 'Authorization': `Bearer ${token}` }
             });
             if (res.ok) {
               const data = await res.json();
+              console.log('Response API /me:', data);
               const userData = data.user || data;
-              if (userData && userData.id && userData.email) {
+              // Verifica solo i campi essenziali
+              if (userData && userData.id && userData.email && userData.name && userData.role) {
+                console.log('Aggiornamento dati utente completato');
                 setUser(userData);
+              } else {
+                console.log('Dati utente incompleti ricevuti:', userData);
+                console.log('Response completa:', data);
               }
+            } else {
+              console.log('Errore API /me:', res.status);
             }
           }
         } catch (error) {
@@ -153,7 +163,7 @@ export default function ProfilePage() {
 
         {/* Body principale: personalizzazione profilo studente (debug) */}
         <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: 'center', padding: 20 }}>
-          <Text style={{ color: '#00bfff', fontSize: 22, fontWeight: 'bold', marginBottom: 18 }}>👤 {translations[language].profilePage.title}</Text>
+          <Text style={{ color: '#00bfff', fontSize: 22, fontWeight: 'bold', marginBottom: 18 }}>👤 {translations[language].profilePage.title} - {user.role.toUpperCase()}</Text>
           <View style={{ backgroundColor: '#181f1f', borderRadius: 16, padding: 20, width: '100%', marginBottom: 18 }}>
             <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>{translations[language].profilePage.name}</Text>
             <TextInput
