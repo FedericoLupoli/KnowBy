@@ -13,7 +13,7 @@ const Header = () => {
   const { user } = useAuth();
   
   // Add defensive checks
-  const isUserPro = user?.pro === true;
+  const isUserPro = user?.pro ? true : false;
   const isUserAdmin = user?.role === 'admin';
   
   return (

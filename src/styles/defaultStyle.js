@@ -33,17 +33,25 @@ const defaultStyle = {
   },
   headerTagPro: {
     color: '#ffd700',
-              fontSize: 14,
-              fontWeight: 'bold',
-              marginLeft: 8,
-              paddingHorizontal: 6,
-              paddingVertical: 2,
-              borderRadius: 4,
-              borderWidth: 1,
-              borderColor: '#ffd700',
-              textShadowColor: '#000',
-              textShadowOffset: { width: 0, height: 1 },
-              textShadowRadius: 2,
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginLeft: 8,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: '#ffd700',
+    // Effetto neon dorato
+    backgroundColor: 'rgba(255, 215, 0, 0.1)', // Background leggermente dorato
+    textShadowColor: '#ffd700',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 8,
+    // Ombra per il container (effetto glow)
+    shadowColor: '#ffd700',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10,
+    elevation: 8,
   },
   headerTagAdmin: {
     color: '#ff3c00ff',
@@ -55,9 +63,17 @@ const defaultStyle = {
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#ff3c00ff',
-    textShadowColor: '#000',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 2,
+    // Effetto neon rosso
+    backgroundColor: 'rgba(255, 60, 0, 0.1)', // Background leggermente rosso
+    textShadowColor: '#ff3c00ff',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 8,
+    // Ombra per il container (effetto glow)
+    shadowColor: '#ff3c00ff',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10,
+    elevation: 8,
   },
   text: {
     color: '#efeff2',
