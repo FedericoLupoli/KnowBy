@@ -48,34 +48,56 @@ export default function ProfilePage() {
         try {
           const token = await AsyncStorage.getItem('jwtToken');
           if (token) {
-            console.log('Tentativo refresh dati utente...');
             const res = await fetch(buildApiUrl(API_ENDPOINTS.ME), {
               headers: { 'Authorization': `Bearer ${token}` }
             });
             if (res.ok) {
               const data = await res.json();
-              console.log('Response API /me:', data);
               const userData = data.user || data;
               // Verifica solo i campi essenziali
               if (userData && userData.id && userData.email && userData.name && userData.role) {
-                console.log('Aggiornamento dati utente completato');
                 setUser(userData);
-              } else {
-                console.log('Dati utente incompleti ricevuti:', userData);
-                console.log('Response completa:', data);
               }
-            } else {
-              console.log('Errore API /me:', res.status);
             }
           }
-        } catch (error) {
-          console.log('Errore refresh dati utente:', error);
+        } catch (_error) {
+          // Errore silenzioso
         }
       }
     };
 
     refreshUserData();
   }, [user, setUser]);
+
+  // Forza il caricamento completo dei dati utente al primo accesso alla pagina
+  React.useEffect(() => {
+    const loadCompleteUserData = async () => {
+      if (user && user.id) {
+        try {
+          const token = await AsyncStorage.getItem('jwtToken');
+          if (token) {
+            const res = await fetch(buildApiUrl(API_ENDPOINTS.ME), {
+              headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+              const data = await res.json();
+              const userData = data.user || data;
+              if (userData && userData.id) {
+                setUser(userData);
+              }
+            }
+          }
+        } catch (_error) {
+          // Errore silenzioso
+        }
+      }
+    };
+
+    // Carica solo una volta quando il componente si monta e l'utente è disponibile
+    if (user && !dataInitialized) {
+      loadCompleteUserData();
+    }
+  }, [user, setUser, dataInitialized]);
 
   // Redirect automatico se non autenticato e non in caricamento
   React.useEffect(() => {
