@@ -4,11 +4,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import defaultStyle from '../styles/defaultStyle';
 import { FontAwesome } from '@expo/vector-icons';
 import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
 import translations from '../utils/translations';
 
 // Header della pagina principale con gradient e titolo
 const Header = () => {
   const { language } = useLanguage();
+  const { user } = useAuth();
+  
+  // Add defensive checks
+  const isUserPro = user?.pro === true;
+  const isUserAdmin = user?.role === 'admin';
   
   return (
     <LinearGradient
@@ -18,7 +24,11 @@ const Header = () => {
       end={{ x: 0, y: 1 }}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', paddingHorizontal: 16 }}>
-        <Text style={defaultStyle.headerText}>KnowBy</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={defaultStyle.headerText}>KnowBy</Text>
+          {isUserPro ? (<Text style={defaultStyle.headerTagPro}>PRO</Text>) : null}
+          {isUserAdmin ? (<Text style={defaultStyle.headerTagAdmin}>ADMIN</Text>) : null}
+        </View>
         <TouchableOpacity
           onPress={() => Alert.alert(translations[language].header.commentsAlert, translations[language].header.commentsMessage)}
           style={{ borderRadius: 50, padding: 10 }}
