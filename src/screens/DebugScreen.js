@@ -10,6 +10,7 @@ export default function DebugScreen() {
   const { user, authError, logout } = useAuth();
   const [testResults, setTestResults] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [activeIcon, setActiveIcon] = useState('user');
 
   const runDiagnostics = async () => {
     setLoading(true);
@@ -156,7 +157,7 @@ export default function DebugScreen() {
           )}
         </ScrollView>
 
-        <Footer />
+        <Footer activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
       </View>
     </MobileOnlyView>
   );

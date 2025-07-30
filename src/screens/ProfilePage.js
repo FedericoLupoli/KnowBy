@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, ScrollView, Alert } from 'react-native';
+import { View, Text, TextInput, Button, ScrollView, Alert, TouchableOpacity } from 'react-native';
 import defaultStyle from '../styles/defaultStyle';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -27,6 +27,8 @@ export default function ProfilePage() {
   const [subject, setSubject] = useState('');
   const [hourlyRate, setHourlyRate] = useState('');
   const [dataInitialized, setDataInitialized] = useState(false);
+
+  const isUserAdmin = user?.role === 'admin';
 
   // Inizializza i dati quando l'utente è disponibile
   React.useEffect(() => {
@@ -246,6 +248,17 @@ export default function ProfilePage() {
             />
             <Button title={loading ? translations[language].profilePage.saving : translations[language].profilePage.saveChanges} color="#00bfff" onPress={handleSave} disabled={loading} />
           </View>
+
+          {isUserAdmin && (
+            <View style={{ borderRadius: 16, padding: 20, width: '100%' }}>
+              <TouchableOpacity style={{ ...defaultStyle.buttonFooter }} onPress={() => navigation.navigate('DebugScreen')}>
+                <Text style={{ ...defaultStyle.buttonFooterText, textAlign: 'center', color: '#000' }}>
+                  DEBUG SCREEN
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+
         </ScrollView>
 
         {/* Footer */}

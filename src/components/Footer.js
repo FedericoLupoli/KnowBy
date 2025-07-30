@@ -11,7 +11,7 @@ import { CommonActions, useNavigation } from '@react-navigation/native';
  *   activeIcon: string - icona attualmente selezionata
  *   setActiveIcon: function - funzione per cambiare l'icona attiva
  */
-const Footer = ({ activeIcon, setActiveIcon }) => {
+const Footer = ({ activeIcon = 'home', setActiveIcon = () => {} }) => {
   // Colori per icone attive/inattive
   const activeColor = '#00bfff';
   const inactiveColor = '#efeff2';
@@ -20,7 +20,9 @@ const Footer = ({ activeIcon, setActiveIcon }) => {
 
   // Navigazione e attivazione icone
   const handleUserPress = () => {
-    setActiveIcon('user');
+    if (typeof setActiveIcon === 'function') {
+      setActiveIcon('user');
+    }
     
     // Evita navigazione se ancora in caricamento
     if (isLoading) {
@@ -36,7 +38,9 @@ const Footer = ({ activeIcon, setActiveIcon }) => {
   };
 
   const handleHomePress = () => {
-    setActiveIcon('home');
+    if (typeof setActiveIcon === 'function') {
+      setActiveIcon('home');
+    }
     navigation.dispatch(
       CommonActions.reset({
         index: 0,
@@ -46,12 +50,16 @@ const Footer = ({ activeIcon, setActiveIcon }) => {
   };
 
   const handleSearchPress = () => {
-    setActiveIcon('search');
+    if (typeof setActiveIcon === 'function') {
+      setActiveIcon('search');
+    }
     navigation.navigate('SearchScreen');
   };
 
   const handleSettingsPress = () => {
-    setActiveIcon('settings');
+    if (typeof setActiveIcon === 'function') {
+      setActiveIcon('settings');
+    }
     navigation.navigate('SettingsPage');
   };
 
