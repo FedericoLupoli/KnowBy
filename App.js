@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import HomeScreen from './src/screens/HomeScreen';
-import ProfileLogin from './src/screens/ProfileLogin';
-import ProfilePage from './src/screens/ProfilePage';
-import SettingsPage from './src/screens/SettingsScreen';
-import { AuthProvider, useAuth } from './src/context/AuthContext';
-import { LanguageProvider } from './src/context/LanguageContext';
+import React, { useEffect, useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from "@react-navigation/stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import ProfileLogin from "./src/screens/ProfileLogin";
+import ProfilePage from "./src/screens/ProfilePage";
+import SettingsPage from "./src/screens/SettingsScreen";
+import { AuthProvider, useAuth } from "./src/context/AuthContext";
+import { LanguageProvider } from "./src/context/LanguageContext";
 
-import * as Font from 'expo-font';
-import { LoaderSplash } from './src/components/Header';
-import ProfileRegister from './src/screens/ProfileRegister';
-import SearchScreen from './src/screens/SearchScreen';
+import * as Font from "expo-font";
+import { LoaderSplash } from "./src/components/Header";
+import ProfileRegister from "./src/screens/ProfileRegister";
+import SearchScreen from "./src/screens/SearchScreen";
 
 const Stack = createStackNavigator();
 
 // Componente interno che ha accesso ai context
 function AppNavigator() {
   const { isLoading } = useAuth();
-  
+
   if (isLoading) {
     return <LoaderSplash />;
   }
@@ -48,7 +51,7 @@ export default function App() {
 
   useEffect(() => {
     Font.loadAsync({
-      'KBFONT': require('./assets/fonts/Aladin-Regular.ttf'),
+      KBFONT: require("./assets/fonts/Aladin-Regular.ttf"),
     }).then(() => setFontsLoaded(true));
   }, []);
 
@@ -74,4 +77,4 @@ export default function App() {
       </AuthProvider>
     </LanguageProvider>
   );
-} 
+}
