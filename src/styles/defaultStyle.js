@@ -20,7 +20,7 @@ const defaultStyle = {
     paddingTop: 20,
   },
   headerText: {
-    fontFamily: 'KBFONT',
+    fontFamily: 'Khonsu',
     color: '#efeff2',
     // Font size dinamico: proporzionale alla larghezza dello schermo
     fontSize: width * 0.15, // Circa 36 su uno schermo da 400px

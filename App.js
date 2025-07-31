@@ -54,6 +54,7 @@ export default function App() {
   useEffect(() => {
     Font.loadAsync({
       KBFONT: require("./assets/fonts/Aladin-Regular.ttf"),
+      Khonsu: require("./assets/fonts/Khonsu.ttf"),
     }).then(() => setFontsLoaded(true));
   }, []);
 
