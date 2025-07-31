@@ -38,8 +38,6 @@ export default function SettingsScreen() {
   const { logout, user } = useAuth();
   const navigation = useNavigation();
 
-  const isUserAdmin = user?.role === "admin";
-
   // Redirect automatico se non autenticato
   React.useEffect(() => {
     if (!user) {

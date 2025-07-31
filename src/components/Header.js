@@ -53,7 +53,7 @@ export const LoaderSplash = () => {
       end={{ x: 0, y: 1 }}
     >
       <Text style={{
-        fontFamily: 'KBFONT',
+        fontFamily: 'Khonsu',
         color: '#00bfff',
         fontSize: 64,
         fontWeight: 'bold',
