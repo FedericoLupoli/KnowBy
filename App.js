@@ -16,6 +16,7 @@ import { LoaderSplash } from "./src/components/Header";
 import ProfileRegister from "./src/screens/ProfileRegister";
 import SearchScreen from "./src/screens/SearchScreen";
 import DebugScreen from "./src/screens/DebugScreen";
+import ConversationsScreen from "./src/screens/ConversationsScreen";
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,7 @@ function AppNavigator() {
         <Stack.Screen name="ProfilePage" component={ProfilePage} />
         <Stack.Screen name="SettingsPage" component={SettingsPage} />
         <Stack.Screen name="DebugScreen" component={DebugScreen} />
+        <Stack.Screen name="ConversationsScreen" component={ConversationsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

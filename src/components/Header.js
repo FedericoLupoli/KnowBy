@@ -1,17 +1,16 @@
 import React from 'react';
-import { Text, TouchableOpacity, Alert, View } from 'react-native';  
+import { Text, TouchableOpacity, View } from 'react-native';  
 import { LinearGradient } from 'expo-linear-gradient';
 import defaultStyle from '../styles/defaultStyle';
 import { FontAwesome } from '@expo/vector-icons';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
-import translations from '../utils/translations';
-
+import { useNavigation } from '@react-navigation/native';
 // Header della pagina principale con gradient e titolo
 const Header = () => {
-  const { language } = useLanguage();
   const { user } = useAuth();
-  
+  const navigation = useNavigation();
+
   // Add defensive checks
   const isUserPro = user?.pro ? true : false;
   const isUserAdmin = user?.role === 'admin';
@@ -30,11 +29,11 @@ const Header = () => {
           {isUserAdmin ? (<Text style={defaultStyle.headerTagAdmin}>ADMIN</Text>) : null}
         </View>
         <TouchableOpacity
-          onPress={() => Alert.alert(translations[language].header.commentsAlert, translations[language].header.commentsMessage)}
+          onPress={() => navigation.navigate('ConversationsScreen')}
           style={{ borderRadius: 50, padding: 10 }}
           activeOpacity={0.7}
         >
-          <FontAwesome name="envelope" size={20} color="#ffffff" />
+          <FontAwesome name="commenting" size={20} color="#ffffff" />
         </TouchableOpacity>
       </View>
     </LinearGradient>

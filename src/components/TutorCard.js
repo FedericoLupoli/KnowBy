@@ -15,8 +15,7 @@ export default function TutorCard({ tutor }) {
   };
 
   return (
-    <View style={{
-      marginBottom: 18,
+    <View style={{marginBottom: 18,
       padding: 22,
       backgroundColor: '#181f1f',
       borderRadius: 14,
@@ -24,17 +23,16 @@ export default function TutorCard({ tutor }) {
       borderColor: '#222',
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
-    }}>
+      justifyContent: 'space-between',}}>
       <View style={{ flex: 1, minWidth: 0 }}>
-        <Text style={{ color: '#00bfff', fontWeight: 'bold', fontSize: 20, marginBottom: 4, flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={{ color: '#ffffff', fontWeight: 'bold', fontSize: 20, marginBottom: 4, flexDirection: 'row', alignItems: 'center' }}>
           👨‍🏫 {tutor.name} {tutor.pro ? <FontAwesome name="check-circle" size={18} color="#ffd700" style={{ marginLeft: 8, marginBottom: -2 }} /> : null}
         </Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
           {tutor.subject ? (
             <Text style={{
-              backgroundColor: '#00bfff',
-              color: '#181f1f',
+              backgroundColor: '#ff3c00ff',
+              color: '#ffffff',
               borderRadius: 8,
               paddingHorizontal: 10,
               paddingVertical: 2,
@@ -70,7 +68,7 @@ export default function TutorCard({ tutor }) {
         style={{ marginLeft: 16, borderRadius: 50, padding: 10 }}
         activeOpacity={0.7}
       >
-        <FontAwesome name="envelope" size={20} color="#00bfff" />
+        <FontAwesome name="paper-plane" size={20} color="#ffffff" />
       </TouchableOpacity>
       
     </View>

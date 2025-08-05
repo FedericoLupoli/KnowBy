@@ -155,6 +155,7 @@ GET /api/me
     "hourlyRate": 25,
     "rating": 4.5,
     "location": "Milano",
+    "pro": true,
     "createdAt": "2024-01-10T10:30:00.000Z"
   }
 }
@@ -170,6 +171,7 @@ GET /api/me
     "role": "student",
     "bio": "Studentessa universitaria",
     "location": "Roma",
+    "pro": false,
     "createdAt": "2024-01-12T14:20:00.000Z"
   }
 }
@@ -359,12 +361,66 @@ GET /api/reviews/1
 
 ---
 
-## Messaggistica
+## Sistema Conversazioni e Messaggistica
 
-### Invia messaggio
-**POST** `/message`
+### Lista conversazioni utente
+**GET** `/conversations`
 
-Invia un messaggio a un altro utente (richiede autenticazione).
+Ottiene tutte le conversazioni dell'utente autenticato con paginazione.
+
+#### Headers
+```
+Authorization: Bearer <jwt_token>
+```
+
+#### Parametri query (opzionali)
+- `page`: Numero di pagina (default: 1)
+- `limit`: Elementi per pagina (default: 10, max: 50)
+
+#### Esempio richiesta
+```
+GET /api/conversations?page=1&limit=10
+```
+
+#### Risposta di successo (200)
+```json
+{
+  "message": "Lista conversazioni recuperata con successo",
+  "conversations": [
+    {
+      "id": 1,
+      "otherUser": {
+        "id": 2,
+        "name": "Mario Rossi",
+        "role": "tutor",
+        "email": "mario@email.com"
+      },
+      "lastMessage": "Perfetto, ci sentiamo domani!",
+      "lastMessageTime": "2024-01-15T10:30:00.000Z",
+      "lastMessageSenderId": 2,
+      "lastMessageType": "text",
+      "unreadCount": 2,
+      "createdAt": "2024-01-10T10:30:00.000Z",
+      "updatedAt": "2024-01-15T10:30:00.000Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "total": 25,
+    "totalPages": 3,
+    "hasNext": true,
+    "hasPrev": false
+  }
+}
+```
+
+---
+
+### Crea nuova conversazione
+**POST** `/conversations`
+
+Crea una nuova conversazione con un altro utente o restituisce quella esistente.
 
 #### Headers
 ```
@@ -374,71 +430,48 @@ Authorization: Bearer <jwt_token>
 #### Parametri richiesti
 ```json
 {
-  "receiverId": "number (obbligatorio)",
-  "content": "string (obbligatorio)"
+  "otherUserId": "number (obbligatorio)"
 }
 ```
 
 #### Esempio richiesta
 ```json
 {
-  "receiverId": 1,
-  "content": "Ciao! Hai disponibilità per una lezione di matematica?"
+  "otherUserId": 2
 }
 ```
 
-#### Risposta di successo (201)
+#### Risposta di successo (201 - nuova / 200 - esistente)
 ```json
 {
-  "message": "Messaggio inviato - placeholder",
-  "messageData": {
+  "message": "Conversazione creata con successo",
+  "conversation": {
     "id": 1,
-    "senderId": 2,
-    "receiverId": 1,
-    "content": "Ciao! Hai disponibilità per una lezione di matematica?",
-    "sentAt": "2024-01-15T10:30:00.000Z"
+    "otherUser": {
+      "id": 2,
+      "name": "Mario Rossi",
+      "role": "tutor",
+      "email": "mario@email.com"
+    },
+    "lastMessage": null,
+    "lastMessageTime": null,
+    "unreadCount": 0,
+    "createdAt": "2024-01-15T10:30:00.000Z",
+    "updatedAt": "2024-01-15T10:30:00.000Z"
   }
 }
 ```
 
----
-
-### Conversazioni utente
-**GET** `/messages`
-
-Ottiene tutte le conversazioni dell'utente autenticato.
-
-#### Headers
-```
-Authorization: Bearer <jwt_token>
-```
-
-#### Risposta di successo (200)
-```json
-{
-  "message": "Conversazioni - placeholder",
-  "conversations": [
-    {
-      "id": 1,
-      "otherUser": {
-        "id": 2,
-        "name": "Mario Rossi",
-        "role": "tutor"
-      },
-      "lastMessage": "Ciao! Hai disponibilità per una lezione di matematica?",
-      "lastMessageTime": "2024-01-15T10:30:00.000Z",
-      "unreadCount": 1
-    }
-  ]
-}
-```
+#### Errori possibili
+- **400**: "Non puoi creare una conversazione con te stesso"
+- **404**: "Utente non trovato"
 
 ---
 
 ### Messaggi di una conversazione
-**GET** `/messages/{conversationId}`
+**GET** `/conversations/{id}/messages`
 
-Ottiene tutti i messaggi di una conversazione specifica.
+Ottiene tutti i messaggi di una conversazione specifica con paginazione.
 
 #### Headers
 ```
@@ -446,28 +479,203 @@ Authorization: Bearer <jwt_token>
 ```
 
 #### Parametri path
-- `conversationId` (obbligatorio): ID della conversazione
+- `id` (obbligatorio): ID della conversazione
+
+#### Parametri query (opzionali)
+- `page`: Numero di pagina (default: 1)
+- `limit`: Elementi per pagina (default: 20, max: 100)
+
+#### Esempio richiesta
+```
+GET /api/conversations/1/messages?page=1&limit=20
+```
 
 #### Risposta di successo (200)
 ```json
 {
-  "message": "Messaggi conversazione - placeholder",
+  "message": "Messaggi conversazione recuperati con successo",
+  "conversation": {
+    "id": 1,
+    "otherUser": {
+      "id": 2,
+      "name": "Mario Rossi",
+      "role": "tutor"
+    }
+  },
   "messages": [
     {
       "id": 1,
-      "senderId": 2,
       "content": "Ciao! Hai disponibilità per una lezione di matematica?",
-      "sentAt": "2024-01-15T09:30:00.000Z"
+      "senderId": 1,
+      "receiverId": 2,
+      "senderName": "Giulia Bianchi",
+      "senderRole": "student",
+      "sentAt": "2024-01-15T09:30:00.000Z",
+      "readAt": "2024-01-15T10:00:00.000Z",
+      "editedAt": null,
+      "messageType": "text",
+      "replyToMessageId": null,
+      "replyToContent": null,
+      "replyToSenderName": null
     },
     {
       "id": 2,
-      "senderId": 1,
       "content": "Sì, sono disponibile! Quando preferisci?",
-      "sentAt": "2024-01-15T10:30:00.000Z"
+      "senderId": 2,
+      "receiverId": 1,
+      "senderName": "Mario Rossi",
+      "senderRole": "tutor",
+      "sentAt": "2024-01-15T10:30:00.000Z",
+      "readAt": null,
+      "editedAt": null,
+      "messageType": "text",
+      "replyToMessageId": 1,
+      "replyToContent": "Ciao! Hai disponibilità per una lezione di matematica?",
+      "replyToSenderName": "Giulia Bianchi"
     }
-  ]
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 45,
+    "totalPages": 3,
+    "hasNext": true,
+    "hasPrev": false
+  }
 }
 ```
+
+#### Errori possibili
+- **403**: "Non autorizzato ad accedere a questa conversazione"
+
+---
+
+### Invia messaggio
+**POST** `/conversations/{id}/messages`
+
+Invia un nuovo messaggio in una conversazione.
+
+#### Headers
+```
+Authorization: Bearer <jwt_token>
+```
+
+#### Parametri path
+- `id` (obbligatorio): ID della conversazione
+
+#### Parametri richiesti
+```json
+{
+  "content": "string (obbligatorio, max 2000 caratteri)",
+  "messageType": "string (opzionale: 'text', 'image', 'file', default: 'text')",
+  "replyToMessageId": "number (opzionale)"
+}
+```
+
+#### Esempio richiesta - Messaggio normale
+```json
+{
+  "content": "Perfetto! Possiamo fare domani alle 15:00?",
+  "messageType": "text"
+}
+```
+
+#### Esempio richiesta - Risposta a messaggio
+```json
+{
+  "content": "Sì, va benissimo!",
+  "messageType": "text",
+  "replyToMessageId": 5
+}
+```
+
+#### Risposta di successo (201)
+```json
+{
+  "message": "Messaggio inviato con successo",
+  "messageData": {
+    "id": 3,
+    "content": "Perfetto! Possiamo fare domani alle 15:00?",
+    "senderId": 1,
+    "receiverId": 2,
+    "senderName": "Giulia Bianchi",
+    "senderRole": "student",
+    "sentAt": "2024-01-15T11:00:00.000Z",
+    "readAt": null,
+    "messageType": "text",
+    "replyToMessageId": null,
+    "conversationId": 1
+  }
+}
+```
+
+#### Errori possibili
+- **403**: "Non autorizzato ad accedere a questa conversazione"
+- **400**: "Messaggio di riferimento non trovato in questa conversazione"
+
+---
+
+### Segna messaggio come letto
+**PUT** `/messages/{id}/read`
+
+Segna un singolo messaggio come letto.
+
+#### Headers
+```
+Authorization: Bearer <jwt_token>
+```
+
+#### Parametri path
+- `id` (obbligatorio): ID del messaggio
+
+#### Esempio richiesta
+```
+PUT /api/messages/5/read
+```
+
+#### Risposta di successo (200)
+```json
+{
+  "message": "Messaggio segnato come letto",
+  "readAt": "2024-01-15T11:30:00.000Z"
+}
+```
+
+#### Errori possibili
+- **404**: "Messaggio non trovato"
+- **400**: "Messaggio già segnato come letto"
+
+---
+
+### Segna tutti i messaggi come letti
+**PUT** `/conversations/{id}/read-all`
+
+Segna tutti i messaggi non letti di una conversazione come letti.
+
+#### Headers
+```
+Authorization: Bearer <jwt_token>
+```
+
+#### Parametri path
+- `id` (obbligatorio): ID della conversazione
+
+#### Esempio richiesta
+```
+PUT /api/conversations/1/read-all
+```
+
+#### Risposta di successo (200)
+```json
+{
+  "message": "Tutti i messaggi sono stati segnati come letti",
+  "messagesMarked": 3,
+  "readAt": "2024-01-15T11:30:00.000Z"
+}
+```
+
+#### Errori possibili
+- **403**: "Non autorizzato ad accedere a questa conversazione"
 
 ---
 
@@ -502,14 +710,20 @@ Tutti gli endpoint restituiscono errori nel seguente formato:
 - Tutti gli endpoint che richiedono autenticazione devono includere il header `Authorization: Bearer <jwt_token>`
 - I token JWT scadono dopo 24 ore
 - Tutte le date sono in formato ISO 8601
-- I placeholder attuali verranno sostituiti con logica reale in futuro
-- Per testare gli endpoint, usa Postman, Insomnia o curl 
 - **Differenza tra `/me` e `/users/{id}`**:
   - `/me` restituisce i dati dell'utente autenticato (basato sul token JWT)
   - `/users/{id}` restituisce i dati di un utente specifico tramite ID
 - La logica di modifica utente (PUT /users/:id) e di recupero dati utente (GET /users/:id) si trova nel file:
   - `controllers/authController.js` (funzioni `updateUser` e `getUserById`)
   - `routes/user.js` (definizione delle route)
+
+### Note sui Messaggi e Conversazioni
+- **Paginazione**: Tutti gli endpoint che restituiscono liste supportano paginazione
+- **Stato lettura**: I messaggi possono essere segnati come letti singolarmente o tutti insieme
+- **Reply**: È possibile rispondere a messaggi specifici usando `replyToMessageId`
+- **Tipi messaggio**: Supporta 'text', 'image', 'file' (attualmente implementato solo 'text')
+- **Sicurezza**: Solo i partecipanti di una conversazione possono accedervi
+- **Ordine messaggi**: I messaggi sono ordinati dal più recente (ORDER BY sent_at DESC)
 
 ---
 
@@ -529,6 +743,36 @@ Tutti gli endpoint restituiscono errori nel seguente formato:
     { "msg": "Password troppo corta", "param": "password", "location": "body" }
   ]
 }
+```
+
+### Esempi di Test con cURL
+
+#### Test completo workflow conversazioni
+```bash
+# 1. Login per ottenere token
+curl -X POST "http://localhost:3000/api/login" \
+  -H "Content-Type: application/json" \
+  -d '{"email": "test@email.com", "password": "password123"}'
+
+# 2. Crea conversazione
+curl -X POST "http://localhost:3000/api/conversations" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"otherUserId": 2}'
+
+# 3. Invia messaggio
+curl -X POST "http://localhost:3000/api/conversations/1/messages" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"content": "Ciao! Come stai?", "messageType": "text"}'
+
+# 4. Lista conversazioni
+curl -X GET "http://localhost:3000/api/conversations?page=1&limit=10" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+
+# 5. Segna tutti come letti
+curl -X PUT "http://localhost:3000/api/conversations/1/read-all" \
+  -H "Authorization: Bearer YOUR_TOKEN"
 ```
 
 ---
@@ -565,7 +809,8 @@ GET /api/users/1
     "subject": "Matematica",
     "hourlyRate": 25,
     "rating": 4.5,
-    "location": "Milano"
+    "location": "Milano",
+    "pro": true
   }
 }
 ```
