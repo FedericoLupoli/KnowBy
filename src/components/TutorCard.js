@@ -25,9 +25,24 @@ export default function TutorCard({ tutor }) {
       alignItems: 'center',
       justifyContent: 'space-between',}}>
       <View style={{ flex: 1, minWidth: 0 }}>
-        <Text style={{ color: '#ffffff', fontWeight: 'bold', fontSize: 20, marginBottom: 4, flexDirection: 'row', alignItems: 'center' }}>
-          👨‍🏫 {tutor.name} {tutor.pro ? <FontAwesome name="check-circle" size={18} color="#ffd700" style={{ marginLeft: 8, marginBottom: -2 }} /> : null}
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+          <Text style={{ color: '#ffffff', fontWeight: 'bold', fontSize: 20 }}>
+            👨‍🏫 {tutor.name}
+          </Text>
+          {tutor.pro ? (
+            <View style={{ 
+              marginLeft: 8, 
+              marginBottom: -2,
+              shadowColor: '#ffd700',
+              shadowOffset: { width: 0, height: 0 },
+              shadowOpacity: 0.8,
+              shadowRadius: 7,
+              elevation: 10,
+            }}>
+              <FontAwesome name="check-circle" size={18} color="#ffd700" />
+            </View>
+          ) : null}
+        </View>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
           {tutor.subject ? (
             <Text style={{
