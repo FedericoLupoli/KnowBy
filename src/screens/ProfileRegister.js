@@ -18,7 +18,7 @@ const loginStyle = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#00bfff',
+    backgroundColor: '#ff3c00ff',
     paddingHorizontal: 20,
     paddingTop: 10,
   },
@@ -39,10 +39,10 @@ const loginStyle = {
     fontSize: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#00bfff',
+    borderColor: '#ff3c00ff',
   },
   button: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#ff3c00ff',
     borderRadius: 12,
     paddingVertical: 12,
     paddingHorizontal: 32,
@@ -148,8 +148,8 @@ export default function ProfileRegister() {
           <View style={{ width: '100%', marginBottom: 16 }}>
             <Text style={{ color: '#efeff2', marginBottom: 4 }}>{translations[language].profileRegister.role}</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Button title={translations[language].profileRegister.student} color={role === 'student' ? '#00bfff' : '#444'} onPress={() => setRole('student')} />
-              <Button title={translations[language].profileRegister.tutor} color={role === 'tutor' ? '#00bfff' : '#444'} onPress={() => setRole('tutor')} />
+              <Button title={translations[language].profileRegister.student} color={role === 'student' ? '#ff3c00ff' : '#444'} onPress={() => setRole('student')} />
+              <Button title={translations[language].profileRegister.tutor} color={role === 'tutor' ? '#ff3c00ff' : '#444'} onPress={() => setRole('tutor')} />
             </View>
           </View>
           {role === 'tutor' && (

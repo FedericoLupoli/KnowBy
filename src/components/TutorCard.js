@@ -47,7 +47,7 @@ export default function TutorCard({ tutor }) {
               {translations[language].tutorCard.subjectNotSpecified}
             </Text>
           )}
-          <Text style={{ color: '#ffd700', fontWeight: 'bold', fontSize: 15 }}>
+          <Text style={{ color: '#ffe657ff', fontWeight: 'bold', fontSize: 15 }}>
             ★
           </Text>
           <Text style={{ color: '#fff', fontWeight: 'bold', marginLeft: 2, fontSize: 15 }}>

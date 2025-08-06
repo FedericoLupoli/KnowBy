@@ -113,7 +113,7 @@ export default function ProfilePage() {
     return (
       <MobileOnlyView>
         <View style={[defaultStyle.container, { justifyContent: 'center', alignItems: 'center' }]}>
-          <Text style={{ color: '#00bfff', fontSize: 18 }}>
+          <Text style={{ color: '#ff3c00ff', fontSize: 18 }}>
             {translations[language]?.profilePage?.loading || 'Caricamento...'}
           </Text>
         </View>
@@ -187,11 +187,11 @@ export default function ProfilePage() {
 
         {/* Body principale: personalizzazione profilo studente (debug) */}
         <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: 'center', padding: 20 }}>
-          <Text style={{ color: '#00bfff', fontSize: 22, fontWeight: 'bold', marginBottom: 18 }}>👤 {translations[language].profilePage.title} - {user.role.toUpperCase()}</Text>
+          <Text style={{ color: '#ff3c00ff', fontSize: 22, fontWeight: 'bold', marginBottom: 18 }}>👤 {translations[language].profilePage.title} - {user.role.toUpperCase()}</Text>
           <View style={{ backgroundColor: '#181f1f', borderRadius: 16, padding: 20, width: '100%', marginBottom: 18 }}>
             <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>{translations[language].profilePage.name}</Text>
             <TextInput
-              style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff' }}
+              style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#ff3c00ff' }}
               value={name}
               onChangeText={setName}
               placeholder={translations[language].profilePage.name}
@@ -199,7 +199,7 @@ export default function ProfilePage() {
             />
             <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>{translations[language].profilePage.email}</Text>
             <TextInput
-              style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff' }}
+              style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#ff3c00ff' }}
               value={email}
               onChangeText={setEmail}
               placeholder={translations[language].profilePage.email}
@@ -211,7 +211,7 @@ export default function ProfilePage() {
               <>
                 <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>{translations[language].profilePage.subject}</Text>
                 <TextInput
-                  style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff' }}
+                  style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#ff3c00ff' }}
                   value={subject}
                   onChangeText={setSubject}
                   placeholder={translations[language].profilePage.subject}
@@ -219,7 +219,7 @@ export default function ProfilePage() {
                 />
                 <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>{translations[language].profilePage.hourlyRate}</Text>
                 <TextInput
-                  style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff' }}
+                  style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#ff3c00ff' }}
                   value={hourlyRate}
                   onChangeText={setHourlyRate}
                   placeholder={user?.hourlyRate ? String(user.hourlyRate) : translations[language].profilePage.hourlyRatePlaceholder}
@@ -230,7 +230,7 @@ export default function ProfilePage() {
             )}
             <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>{translations[language].profilePage.bio}</Text>
             <TextInput
-              style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff', minHeight: 60, textAlignVertical: 'top' }}
+              style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#ff3c00ff', minHeight: 60, textAlignVertical: 'top' }}
               value={bio}
               onChangeText={setBio}
               placeholder={translations[language].profilePage.bio}
@@ -239,14 +239,14 @@ export default function ProfilePage() {
             />
             <Text style={{ color: '#efeff2', fontSize: 16, marginBottom: 8 }}>{translations[language].profilePage.newPassword}</Text>
             <TextInput
-              style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff' }}
+              style={{ backgroundColor: '#232b2b', color: '#efeff2', borderRadius: 8, padding: 10, marginBottom: 12, borderWidth: 1, borderColor: '#ff3c00ff' }}
               value={password}
               onChangeText={setPassword}
               placeholder={translations[language].profilePage.newPasswordPlaceholder}
               placeholderTextColor="#aaa"
               secureTextEntry={true}
             />
-            <Button title={loading ? translations[language].profilePage.saving : translations[language].profilePage.saveChanges} color="#00bfff" onPress={handleSave} disabled={loading} />
+            <Button title={loading ? translations[language].profilePage.saving : translations[language].profilePage.saveChanges} color="#ff3c00ff" onPress={handleSave} disabled={loading} />
           </View>
 
           {isUserAdmin && (

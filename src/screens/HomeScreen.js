@@ -57,7 +57,7 @@ export default function HomeScreen() {
 
         {/* Corpo principale: loader o lista tutor */}
         {loading ? (
-          <ActivityIndicator size="large" color="#00bfff" />
+          <ActivityIndicator size="large" color="#ff3c00ff" />
         ) : (
           <View style={{ paddingHorizontal: 16 }}>
             <FlatList

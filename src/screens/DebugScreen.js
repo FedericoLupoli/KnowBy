@@ -52,7 +52,7 @@ export default function DebugScreen() {
         <Header />
         
         <ScrollView style={{ flex: 1, padding: 20 }}>
-          <Text style={{ color: '#00bfff', fontSize: 20, fontWeight: 'bold', marginBottom: 20 }}>
+          <Text style={{ color: '#ff3c00ff', fontSize: 20, fontWeight: 'bold', marginBottom: 20 }}>
             Debug - Diagnostica App
           </Text>
 
@@ -93,7 +93,7 @@ export default function DebugScreen() {
               title={loading ? "Eseguendo diagnostica..." : "Esegui Diagnostica API"}
               onPress={runDiagnostics}
               disabled={loading}
-              color="#00bfff"
+              color="#ff3c00ff"
             />
           </View>
           

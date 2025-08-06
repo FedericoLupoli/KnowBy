@@ -39,10 +39,10 @@ const loginStyle = {
     fontSize: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#00bfff',
+    borderColor: '#ff3c00ff',
   },
   button: {
-    backgroundColor: '#00bfff',
+    backgroundColor: '#ff3c00ff',
     borderRadius: 12,
     paddingVertical: 12,
     paddingHorizontal: 32,

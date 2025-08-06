@@ -33,7 +33,7 @@ const Header = () => {
           style={{ borderRadius: 50, padding: 10 }}
           activeOpacity={0.7}
         >
-          <FontAwesome name="commenting" size={20} color="#ffffff" />
+          <FontAwesome name="commenting" size={20} color="#ff3c00ff" />
         </TouchableOpacity>
       </View>
     </LinearGradient>
@@ -53,7 +53,7 @@ export const LoaderSplash = () => {
     >
       <Text style={{
         fontFamily: 'Khonsu',
-        color: '#00bfff',
+        color: '#ff3c00ff',
         fontSize: 64,
         fontWeight: 'bold',
         textShadowColor: '#000',

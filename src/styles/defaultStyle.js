@@ -110,7 +110,7 @@ const defaultStyle = {
     paddingHorizontal: 24,
     paddingVertical: 10,
     borderRadius: 8,
-    backgroundColor: '#00bfff', // Azzurro coerente con i dettagli
+    backgroundColor: '#ff3c00ff', // Azzurro coerente con i dettagli
     marginHorizontal: 8,
   },
   buttonFooterText: {
@@ -141,7 +141,7 @@ const defaultStyle = {
     marginVertical: 8,
   },
   blue: {
-    color: '#00bfff', // Azzurro per dettagli
+    color: '#ff3c00ff', // Azzurro per dettagli
   },
   info: {
     color: '#aaa',

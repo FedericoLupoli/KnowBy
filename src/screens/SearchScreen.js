@@ -56,10 +56,10 @@ export default function SearchScreen() {
       <View style={defaultStyle.container}>
         <Header />
         <View style={{ padding: 18 }}>
-          <Text style={{ color: '#00bfff', fontSize: 22, fontWeight: 'bold', marginBottom: 12 }}>🔍 {translations[language].search.title}</Text>
+          <Text style={{ color: '#ff3c00ff', fontSize: 22, fontWeight: 'bold', marginBottom: 12 }}>🔍 {translations[language].search.title}</Text>
           <TextInput
             style={{
-              backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#00bfff',
+              backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#ff3c00ff',
             }}
             placeholder={translations[language].search.namePlaceholder}
             value={name}
@@ -67,7 +67,7 @@ export default function SearchScreen() {
           />
           <TextInput
             style={{
-              backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#00bfff',
+              backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#ff3c00ff',
             }}
             placeholder={translations[language].search.subjectPlaceholder}
             value={subject}
@@ -75,7 +75,7 @@ export default function SearchScreen() {
           />
           <TextInput
             style={{
-              backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#00bfff',
+              backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 10, borderWidth: 1, borderColor: '#ff3c00ff',
             }}
             placeholder={translations[language].search.locationPlaceholder}
             value={location}
@@ -83,18 +83,18 @@ export default function SearchScreen() {
           />
           <TextInput
             style={{
-              backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 12, borderWidth: 1, borderColor: '#00bfff',
+              backgroundColor: '#2e3838', color: '#efeff2', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 12, fontSize: 16, marginBottom: 12, borderWidth: 1, borderColor: '#ff3c00ff',
             }}
             placeholder={translations[language].search.ratingPlaceholder}
             value={rating}
             onChangeText={setRating}
             keyboardType="numeric"
           />
-          <Button title={loading ? translations[language].search.searching : translations[language].search.search} color="#00bfff" onPress={handleSearch} disabled={loading || (!name && !subject && !location && !rating)} />
+          <Button title={loading ? translations[language].search.searching : translations[language].search.search} color="#ff3c00ff" onPress={handleSearch} disabled={loading || (!name && !subject && !location && !rating)} />
           {error ? <Text style={{ color: 'red', marginTop: 10 }}>{error}</Text> : null}
         </View>
         {loading ? (
-          <ActivityIndicator size="large" color="#00bfff" style={{ marginTop: 20 }} />
+          <ActivityIndicator size="large" color="#ff3c00ff" style={{ marginTop: 20 }} />
         ) : (
           <FlatList
             data={results}
