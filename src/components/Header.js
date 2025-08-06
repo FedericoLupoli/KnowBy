@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';  
+import { Text, TouchableOpacity, View, Image } from 'react-native';  
 import { LinearGradient } from 'expo-linear-gradient';
 import defaultStyle from '../styles/defaultStyle';
 import { FontAwesome } from '@expo/vector-icons';
@@ -18,13 +18,18 @@ const Header = () => {
   return (
     <LinearGradient
       colors={['#181a1b', '#232b2b']}
-      style={defaultStyle.header}
+      style={[defaultStyle.header, { backgroundColor: 'transparent' }]}
       start={{ x: 0, y: 0.3 }}
       end={{ x: 0, y: 1 }}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', paddingHorizontal: 16 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={defaultStyle.headerText}>KnowBy</Text>
+          <Image 
+            source={require('../../assets/icons/scritta.png')} 
+            alt="Logo" 
+            style={{ width: 150, height: 100, marginRight: -3 }} 
+            resizeMode="contain"
+          />
           {isUserPro ? (<Text style={defaultStyle.headerTagPro}>PRO</Text>) : null}
           {isUserAdmin ? (<Text style={defaultStyle.headerTagAdmin}>ADMIN</Text>) : null}
         </View>
@@ -51,18 +56,12 @@ export const LoaderSplash = () => {
       start={{ x: 0, y: 0.3 }}
       end={{ x: 0, y: 1 }}
     >
-      <Text style={{
-        fontFamily: 'Khonsu',
-        color: '#ff3c00ff',
-        fontSize: 64,
-        fontWeight: 'bold',
-        textShadowColor: '#000',
-        textShadowOffset: { width: 0, height: 2 },
-        textShadowRadius: 4,
-        marginBottom: 24,
-      }}>
-        KnowBy
-      </Text>
+      <Image 
+        source={require('../../assets/icons/scritta.png')} 
+        alt="Logo" 
+        style={{ height: 100, marginBottom: 20 }} 
+        resizeMode="contain"
+      />
       <Text style={{ color: '#efeff2', fontSize: 18, opacity: 0.7 }}>
         {language === 'en' ? 'Loading...' : 'Caricamento...'}
       </Text>
