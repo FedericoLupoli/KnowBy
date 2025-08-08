@@ -88,13 +88,16 @@
 <summary><strong>📂 Struttura delle Cartelle</strong></summary>
 
 ```
-KnowByV2/
+KnowByDEV/
 ├── 📄 App.js                 # Entry point principale
 ├── 📄 index.js              # Registrazione componente root
 ├── 📄 package.json          # Dipendenze e configurazione NPM
+├── 📄 package-lock.json     # Lock file dipendenze
 ├── 📄 eas.json             # Configurazione Expo Application Services
 ├── 📄 app.json             # Configurazione app Expo
 ├── 📄 eslint.config.js     # Configurazione linting
+├── 📄 .env                 # Variabili d'ambiente
+├── 📄 .gitignore           # File ignorati da Git
 │
 ├── 📁 src/                  # Codice sorgente principale
 │   ├── 📁 components/       # Componenti riutilizzabili
@@ -102,38 +105,58 @@ KnowByV2/
 │   │   ├── Footer.js        # Bottom navigation
 │   │   ├── Body.js          # Container contenuti
 │   │   ├── TutorCard.js     # Card tutor
-│   │   ├── AuthErrorBanner.js
-│   │   ├── InfoApp.js
-│   │   ├── MobileOnlyView.js
-│   │   └── SocialLinks.js
+│   │   ├── AuthErrorBanner.js # Banner errori autenticazione
+│   │   ├── InfoApp.js       # Informazioni app
+│   │   ├── MobileOnlyView.js # Vista solo mobile
+│   │   ├── SocialLinks.js   # Collegamenti social
+│   │   └── 📁 messages/     # Componenti messaggi
+│   │       └── MessageTutorCard.js # Card messaggi tutor
 │   │
 │   ├── 📁 screens/          # Schermate principali
 │   │   ├── HomeScreen.js    # Dashboard principale
 │   │   ├── SearchScreen.js  # Ricerca tutor
+│   │   ├── ConversationsScreen.js # Schermata conversazioni
 │   │   ├── ProfilePage.js   # Profilo utente
 │   │   ├── ProfileLogin.js  # Autenticazione login
 │   │   ├── ProfileRegister.js # Registrazione
-│   │   └── SettingsScreen.js # Impostazioni
+│   │   ├── SettingsScreen.js # Impostazioni
+│   │   └── DebugScreen.js   # Schermata debug
 │   │
 │   ├── 📁 context/          # Gestione stato globale
 │   │   ├── AuthContext.js   # Context autenticazione
 │   │   └── LanguageContext.js # Context multilingue
 │   │
+│   ├── 📁 config/           # Configurazioni
+│   │   └── api.js          # Configurazione API
+│   │
 │   ├── 📁 styles/           # Stili e temi
 │   │   └── defaultStyle.js  # Stili condivisi
 │   │
 │   └── 📁 utils/            # Utilità e helpers
-│       └── translations.js  # Gestione traduzioni
+│       ├── translations.js  # Gestione traduzioni
+│       └── apiTest.js      # Test API
 │
 ├── 📁 assets/               # Risorse statiche
 │   ├── 📁 icons/           # Icone app
+│   │   ├── adaptive-icon.png
+│   │   ├── favicon.png
+│   │   ├── icon.png
+│   │   └── scritta.png
 │   ├── 📁 images/          # Immagini e splash
+│   │   └── splash-icon.png
 │   └── 📁 fonts/           # Font personalizzati
+│       ├── Aladin-Regular.ttf
+│       ├── AMORIA.otf
+│       └── Khonsu.ttf
 │
-└── 📁 docs/                # Documentazione progetto
-    ├── ACCOUNT_SYSTEM.md   # Sistema di autenticazione
-    ├── CHAT_WORKFLOW_STEPS.md # Workflow chat
-    └── DOCS.md            # Documentazione tecnica
+├── 📁 .expo/               # File di configurazione Expo
+├── 📁 dist/                # File di build
+├── 📁 node_modules/        # Dipendenze NPM
+│
+└── 📋 Documentazione        # File di documentazione
+    ├── README.md           # Documentazione principale
+    ├── DOCS.md            # Documentazione tecnica
+    └── CHAT_WORKFLOW_STEPS.md # Workflow chat
 ```
 
 </details>
