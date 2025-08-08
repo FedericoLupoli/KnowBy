@@ -1,4 +1,4 @@
-# KnowBy V2
+# KnowBy
 
 <div align="center">
 
@@ -32,7 +32,7 @@
 
 ## 📋 Panoramica
 
-**KnowBy V2** è un'applicazione mobile cross-platform sviluppata in React Native ed Expo, progettata per rivoluzionare il modo in cui studenti e tutor si connettono. L'app offre un'interfaccia utente moderna e intuitiva con tema scuro, animazioni fluide e un design responsive ottimizzato per dispositivi mobili.
+**KnowBy** è un'applicazione mobile cross-platform sviluppata in React Native ed Expo, progettata per rivoluzionare il modo in cui studenti e tutor si connettono. L'app offre un'interfaccia utente moderna e intuitiva con tema scuro, animazioni fluide e un design responsive ottimizzato per dispositivi mobili.
 
 ### � Status del Progetto
 
@@ -78,7 +78,7 @@
 ## 📱 Screenshot
 
 <!-- Inserisci qui uno screenshot dell'app, ad esempio: -->
-<!-- ![Schermata KnowByV2](assets/images/splash-icon.png) -->
+<!-- ![Schermata KnowBy](assets/images/splash-icon.png) -->
 
 ---
 
@@ -181,7 +181,7 @@ Prima di iniziare, assicurati di avere installato:
 ```bash
 # 1. Clona il repository
 git clone https://github.com/FedericoLupoli/KnowByDEV.git
-cd KnowByV2
+cd KnowBy
 
 # 2. Installa le dipendenze
 npm install
