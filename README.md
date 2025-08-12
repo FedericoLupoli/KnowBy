@@ -6,7 +6,7 @@
 ![React Native](https://img.shields.io/badge/React%20Native-v0.79.5-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-0.1.7-brightgreen?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.2.4-brightgreen?style=for-the-badge)
 
 **Una piattaforma mobile moderna per connettere studenti e tutor**
 
