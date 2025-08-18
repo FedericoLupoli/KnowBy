@@ -269,10 +269,10 @@ EXPO_PUBLIC_DEBUG_MODE=false
 
 Per informazioni più dettagliate, consulta la documentazione tecnica:
 
-- **[DOCS.md](DOCS.md)**: Documentazione tecnica completa
-- **[ACCOUNT_SYSTEM.md](ACCOUNT_SYSTEM.md)**: Sistema di autenticazione
-- **[CHAT_WORKFLOW_STEPS.md](CHAT_WORKFLOW_STEPS.md)**: Workflow della chat
-- **[SECURITY.md](SECURITY.md)**: Linee guida di sicurezza
+- **[DOCS.md](docs/DOCS.md)**: Documentazione tecnica completa
+- **[ACCOUNT_SYSTEM.md](docs/ACCOUNT_SYSTEM.md)**: Sistema di autenticazione
+- **[CHAT_WORKFLOW_STEPS.md](docs/CHAT_WORKFLOW_STEPS.md)**: Workflow della chat
+- **[SECURITY.md](docs/SECURITY.md)**: Linee guida di sicurezza
 
 ### 🔧 Risoluzione Problemi
 
