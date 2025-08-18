@@ -396,9 +396,9 @@ copies or substantial portions of the Software.
 
 <img src="https://skillicons.dev/icons?i=figma,photoshop"/> 
 <br>
-<p><strong>UI/UX di <a href='https://github.com/AndreaMiccoli'>Andrea Miccoli</a></strong></p>
+<p><strong>UI/UX di <a href='https://github.com/AndreaaMiccoli'>Andrea Miccoli</a></strong></p>
 
-[![GitHub](https://img.shields.io/badge/GitHub-AndreaMiccoli-black?style=for-the-badge&logo=github)](https://github.com/AndreaMiccoli)
+[![GitHub](https://img.shields.io/badge/GitHub-AndreaMiccoli-black?style=for-the-badge&logo=github)](https://github.com/AndreaaMiccoli)
 
 ---
 
