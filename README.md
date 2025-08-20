@@ -5,7 +5,7 @@
 ![Expo](https://img.shields.io/badge/Expo-v53.0.20-000020?style=for-the-badge&logo=expo&logoColor=white)
 ![React Native](https://img.shields.io/badge/React%20Native-v0.79.5-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-AGPL--3.0-blue?style=for-the-badge)
 ![Version](https://img.shields.io/badge/Version-0.2.4-brightgreen?style=for-the-badge)
 
 **Una piattaforma mobile moderna per connettere studenti e tutor**
@@ -353,22 +353,22 @@ Se trovi un bug, [apri una issue](https://github.com/FedericoLupoli/KnowByDEV/is
 
 ## 📄 Licenza
 
-Questo progetto è distribuito sotto **Licenza MIT**. Vedi il file [LICENSE](LICENSE) per i dettagli completi.
+Questo progetto è distribuito sotto **Licenza AGPL-3.0**. Vedi il file [LICENSE](LICENSE) per i dettagli completi.
 
 ```
-MIT License
+GNU AGPL-3.0 License
 
 Copyright (c) 2025 Federico Lupoli
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You are free to use, modify, and distribute this software under the following conditions:
+
+1. You MUST disclose your source code, including any modifications, when you distribute or make the software available over a network.
+2. You MAY NOT claim ownership of the original or modified code.
+3. You MUST retain this copyright notice and license in all copies or substantial portions of the software.
+
+For the full license text, see: https://www.gnu.org/licenses/agpl-3.0.html
 ```
 
 ---
